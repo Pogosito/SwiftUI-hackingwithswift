@@ -8,57 +8,49 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var checkAmount = ""
+    @State private var numberOfPeople = 2
+    @State private var tipPercentage = 2
     
-    @State private var countTap = 3
-    @State private var someBool = false
-    @State private var name = "Pogos"
+    let tipPercentages: [Int] = [10, 15, 20, 25, 0]
     
-    let options: [String] = ["options 1", "options 2", "options 3", "options 4", "options 5"]
-    @State private var selectedOption = 0
-    
+    var totalPerPerson: Double {
+        let peopleCount = Double(2 + numberOfPeople)
+        let tipSelection = Double(tipPercentages[tipPercentage])
+        let orderAmount = Double(checkAmount) ?? 0
+        let tipValue = orderAmount / 100 * tipSelection
+        let grandTotal = orderAmount + tipValue
+        let amountPerPerson = grandTotal / peopleCount
+
+        return amountPerPerson
+    }
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Секции разделяют дочерние элементы визуально"), footer: Text("Ниже элементы разделены на две группы, но при этом никого визуального разделения мы не замечаем")) {
-                    Text("Hello, world!")
-                    Text("Hello, world!")
-                }
-
-                Group {
-                    Text("Hello, world!")
-                    Text("Hello, world!")
-                    Text("Hello, world!")
-                    Text("Hello, world!")
-                    Text("Hello, world!")
-                    Text("Hello, world!")
-                }
-
-                Group {
-                    Text("Hello, world!")
-                    Text("Hello, world!")
-                    Text("Hello, world!")
-                }
-
-                Section(header: Text("Поскольку отображаемое значение - состояние, то при его изменении обновляется все view, которые отображают это значение")) {
-                    Button("Кол - во нажатий \(self.countTap)") {
-                        self.countTap += 1
+                Section {
+                    TextField("Amount", text: $checkAmount)
+                        .keyboardType(.decimalPad)
+                    Picker("Number of people ", selection: $numberOfPeople) {
+                        ForEach(2 ..< 100) {
+                            Text("\($0) people")
+                        }
                     }
                 }
-
-                Section(header: Text("Two-way binding, сам textField способен изменять значение, записанное в состоянии")) {
-                    TextField("", text: $name)
-                    Text("My name is \(name)")
+                
+                Section(header: Text("How much tip do you want to leave? ")) {
+                    Picker("Tip percentage", selection: $tipPercentage) {
+                        ForEach(0 ..< self.tipPercentages.count) {
+                            Text("\(self.tipPercentages[$0])")
+                        }
+                    }.pickerStyle(SegmentedPickerStyle())
                 }
                 
-                Section(header: Text("С помощью ForEach можно легко создать picker")) {
-                    Picker(selection: $selectedOption, label: Text("Пикер"), content: {
-                        Text("Some Text")
-                        Text("Some Text")
-                    })
+                Section {
+                    Text("$ \(self.totalPerPerson, specifier: "%.2f")")
                 }
             }
-            .navigationBarTitle("SwiftUI", displayMode: .large)
-       }
+            .navigationBarTitle(Text("WeSplit"))
+        }
     }
 }
 
