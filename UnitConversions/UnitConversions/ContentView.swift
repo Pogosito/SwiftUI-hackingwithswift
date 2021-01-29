@@ -156,7 +156,7 @@ struct ContentView: View {
                     }
                 }
             }
-            // Убрал title у NavigationView, потому что в логе появляются ошибки, которые я не хочу видеть (баш со стороны apple)
+            // Убрал title у NavigationView, потому что в логе появляются ошибки, которые я не хочу видеть (баг со стороны apple)
             //.navigationBarTitle(Text("Unit conversions"), displayMode: .inline)
         }
     }
