@@ -9,69 +9,66 @@ import SwiftUI
 
 struct ContentView: View {
 
-    let linerGradient = LinearGradient(gradient: Gradient(colors: [.blue, .white, .purple]), startPoint: .topLeading, endPoint: .bottomTrailing)
-
-    let radialGradinet = RadialGradient(gradient: Gradient(colors: [.green, .yellow, .blue, .white]), center: .topLeading, startRadius: 50, endRadius: 300)
-
-    let angularGradinet = AngularGradient(gradient: Gradient(colors: [.red, .blue, .green, .purple]), center: .bottom)
+    @State private var countries = ["Estonia", "France", "Germany", "Ireland", "Italy", "Nigeria", "Poland", "Russia", "Spain", "UK", "US"].shuffled()
+    @State private var correctAnswer = Int.random(in: 0...2)
+    @State private var showingScore = false
+    @State private var scoreTitle = ""
+    @State private var alertText = ""
+    @State private var totalScore = 0
 
     var body: some View {
-        VStack(alignment: .trailing, spacing: 20) {
-            Text("Hello, world!")
-            Text("Pogos krasava")
-            Section {
-                Text("Text in VStack #1")
-                Text("Text in VStack #2")
-                Text("Text in VStack #3")
-                Text("Text in VStack #4")
-                Button("It is a button") {
-                    print("Pressed button")
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [.black, .blue]), startPoint: .top, endPoint: .bottom)
+                .edgesIgnoringSafeArea(.all)
+            VStack(spacing: 30) {
+                VStack {
+                    Text("Tap the flag of")
+                        .foregroundColor(.white)
+                    Text(countries[correctAnswer])
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .fontWeight(.black)
+                    Text("\(totalScore)")
+                        .foregroundColor(.white)
+                        .font(.largeTitle)
+                        .fontWeight(.black)
                 }
-                .frame(width: 100, height: 100, alignment: .center)
-                .background(Color.red)
-                
-                Button(action: {
-                    print("Pogos")
-                }, label: {
-                    ZStack {
-                        Color.clear
-                        VStack {
-                            Image(systemName: "book").renderingMode(.original)
-                            Text("Book button with advanced layout ")
-                        }
+
+                ForEach(0 ..< 3) { number in
+                    Button(action: {
+                        self.flagTapped(number)
+                    }) {
+                        Image(self.countries[number])
+                            .renderingMode(.original)
+                            .clipShape(Capsule())
+                            .overlay(Capsule().stroke(Color.black, lineWidth: 1))
+                            .shadow(color: .black, radius: 2)
                     }
-                })
-            }
-            Group {
-                Text("Text in VStack #6")
-                Text("Text in VStack #7")
-                Text("Text in VStack #8")
-                Text("Text in VStack #9")
-                Text("Text in VStack #10")
-            }
-            HStack(alignment: .center) {
-                ZStack {
-                    angularGradinet
-                    Text("sad")
                 }
                 Spacer()
-                HStack(spacing: 50){
-                    Text("Text in HStack #1")
-                    Text("Text in HStack #2")
-                    Spacer()
-                }
-                .background(linerGradient)
+            }.alert(isPresented: $showingScore) {
+                Alert(title: Text(scoreTitle), message: Text("\(alertText)"), dismissButton: .default(Text("Continue")) {
+                    self.askQuestion()
+                })
             }
-            .frame(width: 200, height: 200, alignment: .center)
-            ZStack(alignment: .top) {
-                Color.red
-                Text("Text in ZStack #2000")
-                Text("Text in ZStack #1")
-            }
-            Spacer()
         }
-        .background(radialGradinet)
-        .ignoresSafeArea(.all)
+    }
+    
+    func flagTapped(_ number: Int) {
+        if number == correctAnswer {
+            totalScore += 1
+        } else {
+            totalScore -= 1
+            scoreTitle = "Wrong! That’s the flag of \(countries[number])"
+            alertText = "Your score is \(totalScore)"
+            showingScore = true
+        }
+        askQuestion()
+    }
+    
+    func askQuestion() {
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
     }
 }
 
