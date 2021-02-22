@@ -54,9 +54,19 @@ struct ContentView: View {
                 
                 Section(header: Text("Total amount with tips")) {
                     Text("$ \(self.totalAmountWithTip, specifier: "%.2f")")
+                        .foregroundColor(isTotalAmountRed() ? .red : .black)
                 }
             }
             .navigationBarTitle(Text("WeSplit"))
+        }
+    }
+
+    func isTotalAmountRed() -> Bool {
+        let doubleTip = Double(tip)
+        if  doubleTip == nil || doubleTip == 0 {
+            return true
+        } else {
+            return false
         }
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0475632525D8780B003A9930 /* GridStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0475632425D8780B003A9930 /* GridStack.swift */; };
+		04F3A37425E44EB9003159CE /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3A37325E44EB9003159CE /* Challenge.swift */; };
 		04FF550125D30A64009F5258 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF550025D30A64009F5258 /* AppDelegate.swift */; };
 		04FF550325D30A64009F5258 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF550225D30A64009F5258 /* SceneDelegate.swift */; };
 		04FF550525D30A64009F5258 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FF550425D30A64009F5258 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		0475632425D8780B003A9930 /* GridStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridStack.swift; sourceTree = "<group>"; };
+		04F3A37325E44EB9003159CE /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		04FF54FD25D30A64009F5258 /* ViewsAndModifiers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewsAndModifiers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FF550025D30A64009F5258 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04FF550225D30A64009F5258 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				04FF550225D30A64009F5258 /* SceneDelegate.swift */,
 				04FF550425D30A64009F5258 /* ContentView.swift */,
 				0475632425D8780B003A9930 /* GridStack.swift */,
+				04F3A37325E44EB9003159CE /* Challenge.swift */,
 				04FF550625D30A67009F5258 /* Assets.xcassets */,
 				04FF550B25D30A67009F5258 /* LaunchScreen.storyboard */,
 				04FF550E25D30A67009F5258 /* Info.plist */,
@@ -156,6 +159,7 @@
 				04FF550325D30A64009F5258 /* SceneDelegate.swift in Sources */,
 				0475632525D8780B003A9930 /* GridStack.swift in Sources */,
 				04FF550525D30A64009F5258 /* ContentView.swift in Sources */,
+				04F3A37425E44EB9003159CE /* Challenge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
