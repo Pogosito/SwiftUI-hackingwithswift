@@ -66,6 +66,7 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 10) {
             someView
+                .makeLargeTitleModifier()
             someView
                 .myModifier()
             someAntoherView
@@ -97,7 +98,7 @@ struct ContentView: View {
 //                Text("R\(row) C\(col)")
 //            }
 //
-            CustomStask() {
+            CustomStack() {
                 Text("asdsad")
                 Text("asdsad")
             }

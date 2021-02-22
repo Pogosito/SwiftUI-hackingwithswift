@@ -13,6 +13,7 @@
 		04A1D29025C4AB9100D6920F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A1D28F25C4AB9100D6920F /* Assets.xcassets */; };
 		04A1D29325C4AB9100D6920F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04A1D29225C4AB9100D6920F /* Preview Assets.xcassets */; };
 		04A1D29625C4AB9100D6920F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04A1D29425C4AB9100D6920F /* LaunchScreen.storyboard */; };
+		04F3A37925E45337003159CE /* FlagImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F3A37825E45337003159CE /* FlagImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		04A1D29525C4AB9100D6920F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04A1D29725C4AB9100D6920F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04A1D2A025C4B24A00D6920F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		04F3A37825E45337003159CE /* FlagImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				04A1D28925C4AB8F00D6920F /* AppDelegate.swift */,
 				04A1D28B25C4AB8F00D6920F /* SceneDelegate.swift */,
 				04A1D28D25C4AB8F00D6920F /* ContentView.swift */,
+				04F3A37825E45337003159CE /* FlagImage.swift */,
 				04A1D28F25C4AB9100D6920F /* Assets.xcassets */,
 				04A1D29425C4AB9100D6920F /* LaunchScreen.storyboard */,
 				04A1D29725C4AB9100D6920F /* Info.plist */,
@@ -150,6 +153,7 @@
 				04A1D28A25C4AB8F00D6920F /* AppDelegate.swift in Sources */,
 				04A1D28C25C4AB8F00D6920F /* SceneDelegate.swift in Sources */,
 				04A1D28E25C4AB8F00D6920F /* ContentView.swift in Sources */,
+				04F3A37925E45337003159CE /* FlagImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
