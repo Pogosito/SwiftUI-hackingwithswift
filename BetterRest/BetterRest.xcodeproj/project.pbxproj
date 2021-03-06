@@ -14,6 +14,8 @@
 		04D0379925ED866E0067737D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04D0379825ED866E0067737D /* Preview Assets.xcassets */; };
 		04D0379C25ED866E0067737D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04D0379A25ED866E0067737D /* LaunchScreen.storyboard */; };
 		04D037A525ED86A20067737D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 04D037A425ED86A20067737D /* README.md */; };
+		04FA371925F41B9100F7ABE7 /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA371825F41B9100F7ABE7 /* Demo.swift */; };
+		04FA371C25F4231900F7ABE7 /* SleepCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 04FA371B25F4231900F7ABE7 /* SleepCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		04D0379B25ED866E0067737D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04D0379D25ED866E0067737D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04D037A425ED86A20067737D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		04FA371825F41B9100F7ABE7 /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
+		04FA371B25F4231900F7ABE7 /* SleepCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = SleepCalculator.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				04D0378F25ED86680067737D /* AppDelegate.swift */,
 				04D0379125ED86680067737D /* SceneDelegate.swift */,
 				04D0379325ED86680067737D /* ContentView.swift */,
+				04FA371B25F4231900F7ABE7 /* SleepCalculator.mlmodel */,
+				04FA371825F41B9100F7ABE7 /* Demo.swift */,
 				04D0379525ED866E0067737D /* Assets.xcassets */,
 				04D0379A25ED866E0067737D /* LaunchScreen.storyboard */,
 				04D0379D25ED866E0067737D /* Info.plist */,
@@ -151,6 +157,8 @@
 			files = (
 				04D0379025ED86680067737D /* AppDelegate.swift in Sources */,
 				04D0379225ED86680067737D /* SceneDelegate.swift in Sources */,
+				04FA371C25F4231900F7ABE7 /* SleepCalculator.mlmodel in Sources */,
+				04FA371925F41B9100F7ABE7 /* Demo.swift in Sources */,
 				04D0379425ED86680067737D /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
