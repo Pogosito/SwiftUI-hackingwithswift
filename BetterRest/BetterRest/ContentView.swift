@@ -11,58 +11,97 @@ struct ContentView: View {
 
     @State private var wakeUp = defaultWakeTime
     @State private var sleepAmount = 8.0
-    @State private var coffeeAmount = 1
+    @State private var coffeeAmount = 0
 
-    @State private var alertTitle = ""
+    @State private var alertTitle = "Your ideal bedtime is ..."
     @State private var alertMessage = ""
     @State private var showingAlert = false
 
     var body: some View {
-        NavigationView {
-            Form {
 
-                VStack(alignment: .leading) {
-                    Text("When do you want to wake up ?")
-                        .font(.headline)
+        let wakeUpBinding = Binding(
+            get: {
+                return wakeUp
+            },
+            set: {
+                self.wakeUp = $0
+                calculateBedTime()
+            }
+        )
+
+        let sleepAmountBinding = Binding(
+            get: {
+                return sleepAmount
+            },
+            set: {
+                self.sleepAmount = $0
+                calculateBedTime()
+            }
+        )
+
+        let coffeeAmountBinding = Binding(
+            get: {
+                return coffeeAmount
+            },
+            set: {
+                self.coffeeAmount = $0
+                calculateBedTime()
+            }
+        )
+
+        return NavigationView {
+            Form {
+                Section(header: Text("When do you want to wake up ?")) {
                     DatePicker("Please entire a time",
-                               selection: $wakeUp,
+                               selection: wakeUpBinding,
                                displayedComponents: .hourAndMinute)
                 }
 
-                VStack(alignment: .leading) {
-                    Text("Desired amount of sleep")
-                        .font(.headline)
-
-                    Stepper(value: $sleepAmount,
+                Section(header: Text("Desired amount of sleep")) {
+                    Stepper(value: sleepAmountBinding,
                             in: 4...13) {
                         Text("\(sleepAmount, specifier: "%g") hours")
                     }
                 }
 
-                VStack(alignment: .leading) {
-                    Text("Daily coffee intake")
-                        .font(.headline)
-
-                    Stepper(value: $coffeeAmount, in : 1...20) {
-                        if coffeeAmount == 1 {
-                            Text("1 cup")
-                        } else {
-                            Text("\(coffeeAmount) cups")
+                Section(header: Text("Daily coffee intake")) {
+                    Picker("Bla", selection: coffeeAmountBinding) {
+                        ForEach(1..<21) { amountOfCups in
+                            amountOfCups == 1 ? Text("1 cup") : Text("\(amountOfCups) cups")
                         }
                     }
                 }
+                
+                VStack(alignment: .leading) {
+                    HStack {
+                        Spacer()
+                        Text(alertTitle)
+                            .font(.system(size: 25.0,
+                                          weight: .regular,
+                                          design: .rounded))
+                            .foregroundColor(Color.blue)
+                        Spacer()
+                    }
+
+                    HStack {
+                        Spacer()
+                        Text(alertMessage)
+                            .foregroundColor(Color.blue)
+                        Spacer()
+                    }
+                }
+                .listRowBackground(Color.init(#colorLiteral(red: 0.959415853, green: 0.9599340558, blue: 0.9751341939, alpha: 1)))
             }
             .navigationBarTitle("BetterRest")
-
-            // Интересный инициализатор кнопки, который позволяет пропустить создания кложуры для действия этой кнопки, но при этом позволяет вызывать существующий метод, который будет выполняться по нажатию кнопки.
-            .navigationBarItems(trailing: Button(action: calculateBedTime, label: {
-                Text("Calculate")
-            }))
-            .alert(isPresented: $showingAlert) {
-                Alert(title: Text(alertTitle),
-                      message: Text(alertMessage),
-                      dismissButton: .default(Text("OK")))
-            }
+//             Интересный инициализатор кнопки, который позволяет пропустить создания кложуры для действия этой кнопки, но при этом позволяет вызывать существующий метод, который будет выполняться по нажатию кнопки.
+//            .navigationBarItems(trailing: Button(action: calculateBedTime, label: {
+//                Text("Calculate")
+//            }))
+//            .alert(isPresented: $showingAlert) {
+//                Alert(title: Text(alertTitle),
+//                      message: Text(alertMessage),
+//                      dismissButton: .default(Text("OK")))
+//            }
         }
     }
 
