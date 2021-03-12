@@ -14,6 +14,8 @@
 		04FA373A25F6BA6500F7ABE7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FA373925F6BA6500F7ABE7 /* Preview Assets.xcassets */; };
 		04FA373D25F6BA6500F7ABE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FA373B25F6BA6500F7ABE7 /* LaunchScreen.storyboard */; };
 		04FA374625F6BAAC00F7ABE7 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 04FA374525F6BAAB00F7ABE7 /* README.md */; };
+		04FA378F25FC03BC00F7ABE7 /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA378E25FC03BC00F7ABE7 /* Demo.swift */; };
+		04FA379225FC086600F7ABE7 /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 04FA379125FC086600F7ABE7 /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		04FA373C25F6BA6500F7ABE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04FA373E25F6BA6500F7ABE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04FA374525F6BAAB00F7ABE7 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		04FA378E25FC03BC00F7ABE7 /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
+		04FA379125FC086600F7ABE7 /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +63,11 @@
 		04FA372F25F6BA6000F7ABE7 /* WordScramble */ = {
 			isa = PBXGroup;
 			children = (
+				04FA379125FC086600F7ABE7 /* start.txt */,
 				04FA373025F6BA6000F7ABE7 /* AppDelegate.swift */,
 				04FA373225F6BA6000F7ABE7 /* SceneDelegate.swift */,
 				04FA373425F6BA6000F7ABE7 /* ContentView.swift */,
+				04FA378E25FC03BC00F7ABE7 /* Demo.swift */,
 				04FA373625F6BA6500F7ABE7 /* Assets.xcassets */,
 				04FA373B25F6BA6500F7ABE7 /* LaunchScreen.storyboard */,
 				04FA373E25F6BA6500F7ABE7 /* Info.plist */,
@@ -139,6 +145,7 @@
 				04FA373A25F6BA6500F7ABE7 /* Preview Assets.xcassets in Resources */,
 				04FA374625F6BAAC00F7ABE7 /* README.md in Resources */,
 				04FA373725F6BA6500F7ABE7 /* Assets.xcassets in Resources */,
+				04FA379225FC086600F7ABE7 /* start.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +158,7 @@
 			files = (
 				04FA373125F6BA6000F7ABE7 /* AppDelegate.swift in Sources */,
 				04FA373325F6BA6000F7ABE7 /* SceneDelegate.swift in Sources */,
+				04FA378F25FC03BC00F7ABE7 /* Demo.swift in Sources */,
 				04FA373525F6BA6000F7ABE7 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
