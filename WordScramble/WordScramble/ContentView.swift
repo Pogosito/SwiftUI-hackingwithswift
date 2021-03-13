@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var errorTitle = ""
     @State private var errorMessage = ""
     @State private var showingError = false
+    @State private var score = 0
 
     var body: some View {
         NavigationView {
@@ -28,8 +29,13 @@ struct ContentView: View {
                     Image(systemName: "\($0.count).circle")
                     Text($0)
                 }
+                Text("Your score is \(score)")
+                    .font(.system(size: 45, weight: .bold, design: .rounded))
             }
             .navigationBarTitle(rootWord)
+            .navigationBarItems(trailing: Button(action: startGame, label: {
+                Image(systemName: "arrow.clockwise")
+            }))
             .onAppear(perform: startGame)
             .alert(isPresented: $showingError, content: {
                 Alert(title: Text(errorTitle),
@@ -43,28 +49,34 @@ struct ContentView: View {
         let answer = newWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         guard answer.count > 0 else { return }
 
-        guard isOriginal(word: answer) else {
+        guard isOriginal(word: answer) || answer == newWord else {
             wordError(title: "Word used already", message: "Be more original")
+            score -= 1
             return
         }
 
         guard isPossible(word: answer) else {
             wordError(title: "Word not recognized",
                       message: "You can't just make them up, you know")
+            score -= 1
             return
         }
         
-        guard isReal(word: answer) else {
+        guard isReal(word: answer) || answer.count < 3 else {
             wordError(title: "Word not possible",
                       message: "That isn't real word")
+            score -= 1
             return
         }
 
         usedWords.insert(answer, at: 0)
+        score += newWord.count
         newWord = ""
     }
 
     func startGame() {
+        usedWords = []
+        score = 0
         if let startWordsUrl = Bundle.main.url(forResource: "start", withExtension: ".txt") {
             if let startWords = try? String(contentsOf: startWordsUrl) {
                 let allWords = startWords.components(separatedBy: "\n")
