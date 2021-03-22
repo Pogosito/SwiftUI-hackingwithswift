@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0407543326070988008C39F2 /* InterestingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407543226070988008C39F2 /* InterestingAnimation.swift */; };
+		0407543626071555008C39F2 /* CornerRotateModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0407543526071555008C39F2 /* CornerRotateModifier.swift */; };
 		044D14EC25FDFC9A00B34ECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D14EB25FDFC9A00B34ECA /* AppDelegate.swift */; };
 		044D14EE25FDFC9A00B34ECA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D14ED25FDFC9A00B34ECA /* SceneDelegate.swift */; };
 		044D14F025FDFC9A00B34ECA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044D14EF25FDFC9A00B34ECA /* ContentView.swift */; };
@@ -14,9 +16,12 @@
 		044D14F525FDFC9B00B34ECA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 044D14F425FDFC9B00B34ECA /* Preview Assets.xcassets */; };
 		044D14F825FDFC9B00B34ECA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 044D14F625FDFC9B00B34ECA /* LaunchScreen.storyboard */; };
 		044D150525FDFF3400B34ECA /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 044D150425FDFF3400B34ECA /* README.md */; };
+		04A4DED126028FBF00023267 /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A4DED026028FBF00023267 /* Demo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0407543226070988008C39F2 /* InterestingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestingAnimation.swift; sourceTree = "<group>"; };
+		0407543526071555008C39F2 /* CornerRotateModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerRotateModifier.swift; sourceTree = "<group>"; };
 		044D14E825FDFC9A00B34ECA /* Animations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		044D14EB25FDFC9A00B34ECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		044D14ED25FDFC9A00B34ECA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +31,7 @@
 		044D14F725FDFC9B00B34ECA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		044D14F925FDFC9B00B34ECA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		044D150425FDFF3400B34ECA /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		04A4DED026028FBF00023267 /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,9 @@
 				044D14EB25FDFC9A00B34ECA /* AppDelegate.swift */,
 				044D14ED25FDFC9A00B34ECA /* SceneDelegate.swift */,
 				044D14EF25FDFC9A00B34ECA /* ContentView.swift */,
+				04A4DED026028FBF00023267 /* Demo.swift */,
+				0407543226070988008C39F2 /* InterestingAnimation.swift */,
+				0407543526071555008C39F2 /* CornerRotateModifier.swift */,
 				044D14F125FDFC9B00B34ECA /* Assets.xcassets */,
 				044D14F625FDFC9B00B34ECA /* LaunchScreen.storyboard */,
 				044D14F925FDFC9B00B34ECA /* Info.plist */,
@@ -149,8 +158,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0407543326070988008C39F2 /* InterestingAnimation.swift in Sources */,
 				044D14EC25FDFC9A00B34ECA /* AppDelegate.swift in Sources */,
 				044D14EE25FDFC9A00B34ECA /* SceneDelegate.swift in Sources */,
+				0407543626071555008C39F2 /* CornerRotateModifier.swift in Sources */,
+				04A4DED126028FBF00023267 /* Demo.swift in Sources */,
 				044D14F025FDFC9A00B34ECA /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
