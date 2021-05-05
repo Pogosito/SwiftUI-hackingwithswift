@@ -7,65 +7,73 @@
 
 import SwiftUI
 
-struct SecondView: View {
-
-	@Environment(\.presentationMode) var presentationMode
-
-	var body: some View {
-		ZStack {
-			Color.red
-			VStack {
-				Text("This is a second view")
-				Button("Dismiss") {
-					presentationMode.wrappedValue.dismiss()
-				}
-			}
-		}
-		.ignoresSafeArea()
-	}
+struct ExpenseItem: Identifiable, Codable {
+	var id = UUID()
+	let name: String
+	let type: String
+	let amount: Int
 }
 
-class User: ObservableObject {
-	@Published var name = "Pogos"
-	@Published var secondName = "Anesyan"
+class Expenses: ObservableObject {
+
+	@Published var items = [ExpenseItem]() {
+		didSet {
+			let encoder = JSONEncoder()
+			if let encoded = try? encoder.encode(items) {
+				UserDefaults.standard.set(encoded, forKey: "Items")
+			}
+		}
+	}
+
+	init() {
+		if let items = UserDefaults.standard.data(forKey: "Items") {
+			let decoder = JSONDecoder()
+			if let decoded = try? decoder.decode([ExpenseItem].self, from: items) {
+				self.items = decoded
+			}
+		}
+	}
 }
 
 struct ContentView: View {
 
-	@ObservedObject private var user = User()
-	@State private var isSecondViewShow = false
-
-	@State private var numbers: [Int] = [1, 2, 3]
-	@State private var currentNumber = 4
+	@ObservedObject var expenses = Expenses()
+	@State private var showingAddExpense = false
 
 	var body: some View {
-		VStack {
-			Text("User name is \(user.name), \(user.secondName)")
-			TextField("New user name", text: $user.name)
-			TextField("New user secondName", text: $user.secondName)
-
-			Spacer()
-
-			Button("Open Second View") {
-				isSecondViewShow.toggle()
-			}.sheet(isPresented: $isSecondViewShow, content: {
-				SecondView()
-			})
-
+		NavigationView {
 			List {
-				ForEach(numbers, id: \.self) {
-					Text("\($0)")
-				}
-				.onDelete(perform: { indexSet in
-					numbers.remove(atOffsets: indexSet)
-				})
-			}
+				ForEach(expenses.items) { item in
+					HStack {
+						VStack(alignment: .leading) {
+							Text(item.name)
+							Spacer()
+							Text(item.type)
+						}
 
-			Button("Add new row") {
-				numbers.append(currentNumber)
-				currentNumber += 1
+						Spacer()
+						Text("$\(item.amount)")
+					}
+				}
+				.onDelete(perform: removeItems)
 			}
+			.listStyle(InsetGroupedListStyle())
+			.navigationBarTitle("iExpense")
+			.navigationBarItems(trailing:
+				Button(action: {
+					showingAddExpense = true
+				}, label: {
+					Image(systemName: "plus")
+				})
+			)
 		}
+		.sheet(isPresented: $showingAddExpense, content: {
+			AddView(expense: expenses)
+		})
+	}
+
+	func removeItems(at offset: IndexSet) {
+		expenses.items.remove(atOffsets: offset)
 	}
 }
 

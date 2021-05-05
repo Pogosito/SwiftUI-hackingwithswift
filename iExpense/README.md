@@ -1,6 +1,6 @@
 #  Day 36 
 
-## @State с Струкутрами
+## @State с Структурами
 
 Ранее мы работали с *простыми* состояниями нашего вью: *Int*, *String*, *Double* ..., т.е состояния, которые представляют собой одну величину, а что если усложнить состояние
 
@@ -67,7 +67,7 @@ class User: ObservableObject {
 	@Published secondName: String = "Anesyan"
 }
 
-strcut ContentView: View {
+struсt ContentView: View {
 
 	@ObservedObject private var user = User()
 
@@ -165,4 +165,8 @@ List {
 
 ```
 
-## UserDefaults
+Важно помнить, что нужно идентифицировать объекты так, чтобы они не повторялись, иначе будут проблемы с удалением объектов с одинаковыми ID
+
+# Day 37
+
+Использование знаний от 36 дня для создания проекта iExpense
