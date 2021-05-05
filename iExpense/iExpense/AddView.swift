@@ -16,6 +16,7 @@ struct AddView: View {
 	@State private var name = ""
 	@State private var type = "Personal"
 	@State private var amount = ""
+	@State private var isAlertPresent = false
 
 	static let types = ["Business", "Personal"]
 
@@ -40,8 +41,15 @@ struct AddView: View {
 										   amount: safeIntAmount)
 					expense.items.append(item)
 					presentationMode.wrappedValue.dismiss()
+				} else {
+					isAlertPresent = true
 				}
 			}))
+			.alert(isPresented: $isAlertPresent, content: {
+				Alert(title: Text("Error"),
+					  message: Text("You can't enter in the amount section other than numbers"),
+					  dismissButton: .default(Text("Repeat")))
+			})
 		}
 	}
 }

@@ -67,7 +67,7 @@ class User: ObservableObject {
 	@Published secondName: String = "Anesyan"
 }
 
-struсt ContentView: View {
+struct ContentView: View {
 
 	@ObservedObject private var user = User()
 

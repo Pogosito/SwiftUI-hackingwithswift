@@ -52,20 +52,33 @@ struct ContentView: View {
 						}
 
 						Spacer()
-						Text("$\(item.amount)")
+						let amount = item.amount
+						if amount >= 100 {
+							Text("$\(amount)")
+								.foregroundColor(.red)
+								.font(.title)
+						} else if amount < 100 && amount > 10 {
+							Text("$\(amount)")
+								.foregroundColor(.blue)
+								.font(.title2)
+						} else if amount < 10 {
+							Text("$\(amount)")
+								.foregroundColor(.green)
+								.font(.title3)
+						}
+						
 					}
 				}
 				.onDelete(perform: removeItems)
 			}
 			.listStyle(InsetGroupedListStyle())
 			.navigationBarTitle("iExpense")
-			.navigationBarItems(trailing:
-				Button(action: {
-					showingAddExpense = true
-				}, label: {
-					Image(systemName: "plus")
-				})
-			)
+			.navigationBarItems(leading: EditButton(),
+								trailing: Button(action: {
+									showingAddExpense = true
+								}, label: {
+									Image(systemName: "plus")
+								}))
 		}
 		.sheet(isPresented: $showingAddExpense, content: {
 			AddView(expense: expenses)
