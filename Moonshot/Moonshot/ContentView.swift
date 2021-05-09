@@ -7,15 +7,21 @@
 
 import SwiftUI
 
+enum Constants {
+
+	static let astronauts: [Astronauts] = Bundle.main.decode("astronauts.json")
+	static let missions: [Mission] = Bundle.main.decode("missions.json")
+}
+
 struct ContentView: View {
 
-	let astronauts: [Astronauts] = Bundle.main.decode("astronauts.json")
-	let missions: [Mission] = Bundle.main.decode("missions.json")
+	@State private var isDateShow = false
 
 	var body: some View {
 		NavigationView {
-			List(missions) { mission in
-				NavigationLink(destination: MissionView(mission: mission, astronauts: self.astronauts)) {
+			List(Constants.missions) { mission in
+				NavigationLink(destination: MissionView(mission: mission,
+														astronauts: Constants.astronauts)) {
 					Image(mission.image)
 						.resizable()
 						.scaledToFit()
@@ -24,16 +30,31 @@ struct ContentView: View {
 					VStack(alignment: .leading) {
 						Text(mission.displayName)
 							.font(.headline)
-						Text(mission.formattedLaunchDate)
+
+						if !isDateShow {
+							Text(mission.formattedLaunchDate)
+						} else {
+							Text(madeCrewsNamesString(by: mission.crew))
+						}
 					}
 				}
 			}
 			.navigationBarTitle("Moonshot")
+			.navigationBarItems(trailing: Toggle("Display the date", isOn: $isDateShow))
 		}
+	}
+
+	func madeCrewsNamesString(by crews: [Mission.CrewRole]) -> String {
+		var result: [String] = []
+		for crew in crews {
+			result.append(crew.name)
+		}
+		return result.joined(separator: " ")
 	}
 }
 
 struct ContentView_Previews: PreviewProvider {
+
 	static var previews: some View {
 		ContentView()
 	}

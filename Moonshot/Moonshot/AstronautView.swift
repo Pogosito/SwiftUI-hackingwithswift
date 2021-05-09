@@ -22,6 +22,35 @@ struct AstronautView: View {
 
 					Text(self.astronaut.description)
 						.padding()
+
+					Spacer(minLength: 20)
+
+					HStack {
+						Text("Missions")
+							.font(.largeTitle)
+						Spacer()
+						
+					}.padding(.horizontal)
+					
+					ForEach(Constants.missions) { mission in
+						ForEach(mission.crew, id: \.name) { astro in
+							if astro.name == astronaut.id {
+								HStack {
+									Image(mission.image)
+										.resizable()
+										.scaledToFit()
+										.frame(width: 44, height: 44)
+									Text(mission.displayName)
+									Spacer()
+								}
+								.padding()
+								Divider()
+									.frame(width: UIScreen.main.bounds.width - 50,
+										   height: 1,
+										   alignment: .center)
+							}
+						}
+					}
 				}
 			}
 		}
@@ -31,9 +60,7 @@ struct AstronautView: View {
 
 struct AstronautView_Previews: PreviewProvider {
 
-	static let astronauts: [Astronauts] = Bundle.main.decode("astronauts.json")
-
 	static var previews: some View {
-		AstronautView(astronaut: astronauts[0])
+		AstronautView(astronaut: Constants.astronauts[0])
 	}
 }

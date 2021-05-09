@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Demo: View {
+
 	var body: some View {
 		NavigationView {
 			VStack {
@@ -50,6 +51,7 @@ struct Demo: View {
 }
 
 struct Demo_Previews: PreviewProvider {
+
 	static var previews: some View {
 		ContentView()
 	}
