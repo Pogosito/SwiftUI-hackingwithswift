@@ -6,7 +6,7 @@
 
 Например: 
 
-```
+```swift
 
 struct User { 
 	var name: String = "Pogos"
@@ -38,14 +38,12 @@ struct ContentView: View {
 
 Решение: использовать вместо *struct* *class*
 
-```
+```swift
 
 class User { 
 	var name: String = "Pogos"
 	var secondName: String = "Anesyan"
 }
-
-...
 
 ```
 
@@ -60,7 +58,7 @@ class User {
 
 Пример:
 
-```
+```swift
 
 class User: ObservableObject { 
 	@Published name: String = "Pogos"
@@ -88,7 +86,7 @@ struct ContentView: View {
 
 Пример:
 
-```
+```swift
 
 struct SecondView: View {
 
@@ -120,7 +118,7 @@ struct ContentView: View {
 
 Пример: 
 
-```
+```swift
 
 struct SecondView: View { 
 
@@ -132,8 +130,6 @@ struct SecondView: View {
 		}
 	}
 }
-
-...
 
 ```
 Новая оболочка свойства ***@Environment*** позволяет в рантайме понять в какой "среде" находится вью. Под средой тут подразумеваются условия, которые задает пользователь из вне: темная/светлая тема, время, размер шрифта, вью открыто/закрыто.  
@@ -148,11 +144,9 @@ struct SecondView: View {
 
 Например: 
 
-```
+```swift
 
 @State private var numbers: [Int] = [1, 2, 3] 
-
-...
 
 List {
 	ForEach(numbers, id: \.self) { 

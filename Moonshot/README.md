@@ -2,15 +2,13 @@
 
 ##  GeometryReader
 
-`GeometryReader` нужно воспринимать как контейнер для разных view, размеры, которых могут меняться от того, что меняется размер у самого контейнера, также в данном контейнере нет ограничений на т, как размещать дочерние view
+`GeometryReader` нужно воспринимать как контейнер для разных view, размеры, которых могут меняться от того, что меняется размер у самого контейнера, также в данном контейнере нет ограничений на то, как размещать дочерние view
 
 (Более подробно мы познакомимся с данным view в проекте 15)
 
 Пример: 
 
-```
-
-...
+```swift
 
 var body: some View { 
 	GeometryReader { geo in 
@@ -20,8 +18,6 @@ var body: some View {
 			.frame(width: geometry.size.width)
 	}
 }
-
-...
 
 ```
 
@@ -35,8 +31,7 @@ var body: some View {
 
 Пример: 
 
-```
-...
+```swift
 
 var body: some View { 
 	ScrollView(.vertical) {
@@ -49,7 +44,6 @@ var body: some View {
 	}
 }
 
-...
 
 ```
 
@@ -61,11 +55,12 @@ var body: some View {
 
 Пример: 
 
-```
+```swift
+
 var body: some View {
 	VStack { 
 		NavigationLink(destination: Text("Detail label"), 
-					    label: {
+					   label: {
 							Text("Next View")
 						}) 
 		

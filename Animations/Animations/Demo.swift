@@ -95,7 +95,7 @@ struct Demo: View {
                         .onChanged { currentPoint in
                             self.dragAmount = currentPoint.translation }
                         .onEnded { _ in
-                            withAnimation(.spring()){
+                            withAnimation(.spring()) {
                                 self.dragAmount = .zero
                             }
                         }

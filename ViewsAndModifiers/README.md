@@ -16,7 +16,7 @@
 Вы должны попытаться проникнуться убеждением, что за нашим вью ничего нет то, что вы видите, – это все, что у нас есть.
 
 Как только вы это осознаете, вы  поймете, что чтобы поменять весь фон нужно растянуть элемент на весь экран
-(это можно сделать с помощтю ***frame(maxWidth:, maxHeight: )*** ,  ***frame(width:, height: )*** , отличие лишь в том, что при использовании первого способа, при наличии других вью, SwiftUI позаботиться, чтобы другие вью не были перекрыты
+(это можно сделать с помощью ***frame(maxWidth:, maxHeight: )*** ,  ***frame(width:, height: )*** , отличие лишь в том, что при использовании первого способа, при наличии других вью, SwiftUI позаботиться, чтобы другие вью не были перекрыты
 
 ##  Почему порядок модификаторов важен ? 
 
@@ -24,20 +24,20 @@
 
 Поэтому следующие два элемента будут выглядеть по - разному
 
-```
+```swift
 
-Элемент 1
+// Элемент 1
 
 Button { 
-    // someAction
+	// someAction
 }
 .backgroundColor(Color.red)
 .frame(width: 200, height: 200)
 
-Элемент 2
+// Элемент 2
 
 Button { 
-    // someAction
+	// someAction
 }
 .frame(width: 200, height: 200)
 .backgroundColor(Color.red)
@@ -73,25 +73,28 @@ Button {
 Можно использовать тернарный оператор для использования вариации аргументов в модификаторах
 Например: 
 
-```
+```swift
+
 @State private var bool = false
 
 Button("Some Text") { 
-    bool.toggle()
+	bool.toggle()
 }
 .foregroundColor(bool ? .red : .blue)
+
 ```
 
 Но при этом надо помнить, что следующий код не допустим 
 
-```
+```swift
+
 if (someBool) { 
-    Text("Some Text") 
-        .foregroundColor(.blue)
+	Text("Some Text") 
+		.foregroundColor(.blue)
 } else { 
-    Text("Some Text 2 ") 
-        .foregroundColor(.red)
-        .backgroundColor(.blue)
+	Text("Some Text 2 ") 
+		.foregroundColor(.red)
+		.backgroundColor(.blue)
 }
 
 ```
@@ -104,37 +107,36 @@ if (someBool) {
 
 Например:
 
-```
+```swift
+
 VStack { 
-    Text("SomeText")          
-        .font(.caption2)
-    Text("SomeText")    
-        .font(.caption2)
-    Text("SomeText")
-        .font(.caption2)
+	Text("SomeText")
+		.font(.caption2)
+	Text("SomeText") 
+		.font(.caption2)
+	Text("SomeText")
+		.font(.caption2)
 }
-     |
-     |
-     |
-     |
-    \|/
-    
+
 VStack { 
-    Text("SomeText")
-    Text("SomeText")          
-    Text("SomeText")          
+	Text("SomeText")
+	Text("SomeText")
+	Text("SomeText")
 }
 .font(.caption2)
 
 ```
-Но нужно тут быть аккуратным, поскольку не каждый модификатор является Environment модификатором. 
-Нпример: 
 
-```
+Но нужно тут быть аккуратным, поскольку не каждый модификатор является Environment модификатором.
+
+Например: 
+
+```swift
+
 VStack { 
-    Text("")
-    Text("")
-    Text("")
+	Text("")
+	Text("")
+	Text("")
 }
 .blur(10)
 
@@ -150,16 +152,17 @@ VStack {
 
 Например:
 
-```
+```swift
+
 struct ContentView: View {
-    
-    var someView = Text("SomeView")
-    var someView2 = Text("SomeView2")
-    
-    var body: some View { 
-        someView
-        someView2
-    }
+
+	var someView = Text("SomeView")
+	var someView2 = Text("SomeView2")
+
+	var body: some View { 
+		someView
+		someView2
+	}
 }
 
 ```
@@ -169,60 +172,62 @@ struct ContentView: View {
 
 Например, у Вас в теле вашего ContentView имеется: 
 
-```
+```swift
+
 struct ContentView: View {
 
-    var body: some View { 
-        HStack {
-            Text("Some Text")
-                .font(.largeTitle)
-                .padding()
-                .foregroundColor(.white)
-                .background(Color.blue)
-                .clipShape(Capsule())
-            Text("Some Text2")
-                .font(.largeTitle)
-                .padding()
-                .foregroundColor(.white)
-            .   background(Color.blue)
-                .clipShape(Capsule())
-        }
-    }
+	var body: some View { 
+		HStack {
+			Text("Some Text")
+				.font(.largeTitle)
+				.padding()
+				.foregroundColor(.white)
+				.background(Color.blue)
+				.clipShape(Capsule())
+			Text("Some Text2")
+				.font(.largeTitle)
+				.padding()
+				.foregroundColor(.white)
+				.background(Color.blue)
+				.clipShape(Capsule())
+		}
+	}
 }
 
 ```
 
 Имеем два одинаковых саб вью, но с разными текстами, можем организовать отдельную структуру
 
-```
+```swift
+
 struct CapsuleText: View { 
-    let text: String
-    
-    var body: some View { 
-        Text(text)
-            .font(.largeTitle)
-            .padding()
-            .foregroundColor(.white)
-            .background(Color.blue)
-            .clipShape(Capsule())
-    } 
+	let text: String
+
+	var body: some View { 
+		Text(text)
+			.font(.largeTitle)
+			.padding()
+			.foregroundColor(.white)
+			.background(Color.blue)
+			.clipShape(Capsule())
+			} 
 }
 
 ```
 
 И далее использовать 
 
- Пример: 
+Пример: 
  
-```
-...
+```swift
 
-var body: someView { 
-    CapsuleText(text: "")
-    CapsuleText(text: "Bla")
+var body: someView {
+	VStack { 
+		CapsuleText(text: "")
+		CapsuleText(text: "Bla")
+	}
 }
 
-...
 ```
 
 ## Кастомные модификаторы
@@ -231,29 +236,30 @@ var body: someView {
 
 Например: 
 
-```
+```swift
+
 struct CustomModifier: ViewModifier {
 
-    func body(content: Content) -> some View { 
-        content
-            .modifier()
-            .modifier()
-            ...
-            .modifier()
-    }
+	func body(content: Content) -> some View { 
+		content
+			.modifier1()
+			.modifier2()
+			// Another modifiers...
+	}
 }
 
 ```
 
 И чтобы теперь использовать созданный модификатор нужно использовать  ***modifier(your custom modifier)*** 
 
-Но можно сделать ***extenstion*** для протокола ***view*** 
+Но можно сделать ***extension*** для протокола ***view*** 
 
-```
+```swift
+
 extension View {
-    func useYourCustomModifier() -> some View { 
-        self.modifier(CustomModifier)
-    }
+	func useYourCustomModifier() -> some View { 
+		self.modifier(CustomModifier)
+	}
 }
 
 ```
@@ -262,26 +268,25 @@ extension View {
 
 Например: 
 
-```
+```swift
+
 struct CustomHierarchyModifier: ViewModifier {
 
-    func body(content: Content) -> some View { 
-        ZStack(aligment: .bottomTrailing) { 
-            Color.red
-            content
-                .modifier()
-                .modifier()
-                ...
-                .modifier()
-        }
-    }
+	func body(content: Content) -> some View { 
+		ZStack(alignment: .bottomTrailing) { 
+			Color.red
+			content
+				.modifier()
+				.modifier()
+		}
+	}
 }
 
-extenstion View { 
+extension View { 
 
-    func customHierarchyModifier() -> some View { 
-        self.modifier(CustomHierarchyModifier())
-    }
+	func customHierarchyModifier() -> some View { 
+		self.modifier(CustomHierarchyModifier())
+	}
 }
 
 ```
@@ -300,11 +305,13 @@ extenstion View {
 
 Пример
 
-```
+```swift
+
 init(rows: Int, columns: Int, @ViewBuilder content: @escaping (Int, Int) -> Content)
+
 ```
 
 Теперь контент будет иметь возможность хранить в себе более одного вью. 
 
-(теперь все что мы разместим в нашем контейнере автоматически будет добавлен в HStask, но если вы хотите, чтобы добавляемый контент в контейнер размещался вертикально, то оберните ***content*** в VStask)
+(теперь все что мы разместим в нашем контейнере автоматически будет добавлен в HStack, но если вы хотите, чтобы добавляемый контент в контейнер размещался вертикально, то оберните ***content*** в VStack)
 

@@ -5,18 +5,17 @@
 С помощью ***Stepper*** Вы можете запросить пользователя ввести число  
 
 Пример:
-```
-...
+
+```swift
 
 @State private var stepperCounter: UInt8 = 0
 
 var body: some View { 
-
-    Stepper(value: stepperCounter) { 
-        Text("Your value is \(stepperCounter)")
-    }
+	Stepper(value: stepperCounter) { 
+		Text("Your value is \(stepperCounter)")
+	}
 }
-...
+
 ```
 
 По умолчанию ***Stepper*** имеет ограничения на максимальное и минимальное значение, как у типа, который отображает сам ***Stepper***. 
@@ -26,32 +25,28 @@ var body: some View {
 
 Пример:
 
-```
-...
+```swift
 
 var body: some View { 
-
-    Stepper(value: $stepperCounter, in: 5...15) {
-        Text("Your value is \(stepperCounter)")
-    }
+	Stepper(value: $stepperCounter, in: 5...15) {
+		Text("Your value is \(stepperCounter)")
+	}
 }
-...
+
 ```
 
 По умолчанию, когда пользователь нажимает + или - мы изменяем отображаемое значение на 1. Но значение сдвига можно изменить
 
 Пример:
 
-```
-...
+```swift
 
 var body: some View {
-
-    Stepper(value: $stepperCounter, in 1...10, step: 5) { 
-        Text("Your value is \(stepperCounter)")
-    }
+	Stepper(value: $stepperCounter, in 1...10, step: 5) { 
+		Text("Your value is \(stepperCounter)")
+	}
 }
-...
+
 ``` 
 
 ## DatePicker
@@ -62,22 +57,26 @@ var body: some View {
 
 Например, мы можем сделать так, чтобы пользователь вводил только время (часы + минуты):
 
-```
+```swift
+
 @State private var date = Date() 
 
 var body: some View { 
-    DatePicker("Please enter a time", 
-                selection: $wakeUp, 
-                displayedComponents: .hourAndMinute)
+	DatePicker("Please enter a time", 
+			   selection: $wakeUp, 
+			   displayedComponents: .hourAndMinute)
 }
+
 ```
 
 Также как в обычном ***Picker*** мы можем задать диапазон для выбора дат
 
 Пример:
 
-```
-    DatePicker("Date", selection: $date, in: Date()...)
+```swift
+
+	DatePicker("Date", selection: $date, in: Date()...)
+
 ```
 
 где ***Date()...*** означает диапазон от настоящего времени до любого будущего
