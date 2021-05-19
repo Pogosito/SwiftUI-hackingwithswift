@@ -8,13 +8,14 @@
 
 Пока разберем неявные анимации, потому что они проще
 
-Неявная анимация это тоже модификатор, который прикрепляется к объекту
+Неявная анимация это модификатор, который прикрепляется к объекту
 
 Например: 
 
-```
+```swift
+
 Button("Title") { 
-    // do action
+	// do action
 }
 .animation(.default)
 
@@ -24,12 +25,12 @@ Button("Title") {
 
 Например:
 
-```
+```swift
 
 @State private var amountOfTap = 0
 
 Button("Title") { 
-    amountOfTap += 1
+	amountOfTap += 1
 }
 .scaleAffect(amountOfTap)
 .animation(.default)
@@ -42,78 +43,78 @@ Button("Title") {
 
 Мы можем устанавливать для анимации такие параметры как задержка и протяженность 
 
-```
+```swift
+
 .animation(easeIn(duration: 2))
 
 ```
 
 Можно то же самое написать в более привычном для нас виде и при этом устанавливать разные модификаторы для анимации 
 
-```
+```swift
+
 .animation(
-    Animation
-    .easyInOut(duration: 2)
-    .delay(2)
-    .repeatCount(2, autoreverses: true)
+	Animation
+		.easyInOut(duration: 2)
+		.delay(2)
+		.repeatCount(2, autoreverses: true)
 )
 
 ```
 
 ## Animating bindings
 
-Любую связку можно анимировать, т.е анимировать процесс изменения между двумя состояниями. (Вьюшки, к которым привязаны анимированное значение будут изменять свои свойства с анимацией)
+Любую связку можно анимировать, т.е анимировать процесс изменения между двумя состояниями. 
 
 Например:
 
-```
+```swift
+
 @State private var amountOfAnimation = 0
 
 var body: some View {
 
-    VStack { 
-        Stepper("Tap", value: $amountOfAnimation.animation(), in 0...10) { 
-            Button("Tap me") {
-                secondAnimationAmount += 1
-            }
-            .padding(50)
-            .background(Color.blue)
-            .foregroundColor(.white)
-            .clipShape(Circle())
-            .scaleEffect(secondAnimationAmount)
-        }
-    }
+	VStack { 
+		Stepper("Tap", value: $amountOfAnimation.animation(), in 0...10) { 
+			Button("Tap me") {
+				secondAnimationAmount += 1
+			}
+			.padding(50)
+			.background(Color.blue)
+			.foregroundColor(.white)
+			.clipShape(Circle())
+			.scaleEffect(secondAnimationAmount)
+		}
+	}
 }
 
 ```
 
 Есть второй способ, как можно написать анимацию для перехода из одного состояния в другое
 
-```
-...
+```swift
 
 Stepper("Tap", value: amountOfAnimation.animation(Animation.easyInOut(duration: 1).repeatCount(3, autoreverses: true)), in: 1...10)
 
-...
 ```
 
 ## Explicit animations
 
 Давайте разберем пример явной анимации: 
 
-```
+```swift
 
 Button("Tap me") {
-    withAnimation {
-        thirdAnimationAmount += 360
-    }
+	withAnimation {
+		thirdAnimationAmount += 360
+	}
 }
 .padding(50)
 .background(Color.purple)
 .foregroundColor(.white)
 .clipShape(Circle())
 .rotation3DEffect(
-    .degrees(thirdAnimationAmount),
-    axis: (x: 0, y: 1, z: 0)
+	.degrees(thirdAnimationAmount), axis: (x: 0, y: 1, z: 0)
 )
 
 ```
@@ -125,10 +126,10 @@ Button("Tap me") {
 
 Например:
 
-```
+```swift
 
 withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
-    self.animationAmount += 360
+	self.animationAmount += 360
 }
 
 ```
@@ -139,35 +140,31 @@ withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
 
 Например 
 
-```
-...
+```swift
 
 @State private var isOn = false
 
 var body: some View { 
-    Button("Tap me") { 
-        isOn.toggle()
-    }
-    .animate(.default)
-    .backgroundColor(isOn ? Color.red : Color.blue)
+	Button("Tap me") { 
+		isOn.toggle()
+	}
+	.animate(.default)
+	.backgroundColor(isOn ? Color.red : Color.blue)
 }
 
-....
+
 ```
-В примере выше все, что связано с состоянием ***isOn*** анимироваться не будет, поскольку модификатор анимации установлен раньше, модификатор фона
+В примере выше все, что связано с состоянием ***isOn*** анимироваzться не будет, поскольку модификатор анимации установлен раньше, модификатор фона
 
 Чтобы изменения происходили с анимацией достаточно поменять порядок модификаторов
 
 Например: 
 
-```
-....
+```swift
 
 }
 .backgroundColor(isOn ? Color.red : Color.blue)
 .animate(.default)
-
-....
 
 ```
 
@@ -175,11 +172,10 @@ var body: some View {
 
 Например: 
 
-```
-...
+```swift
 
 Button("Tap me") { 
-    isOn.toggle()
+	isOn.toggle()
 }
 .backgroundColor(isOn ? Color.red : Color.blue)
 .frame(width: 100, height: 100)
@@ -187,7 +183,6 @@ Button("Tap me") {
 .clipShape(RoundedRectangle(cornerRadius: isOn ? 50 : 0))
 .animate(.default)
 
-...
 ```
 
 ***animation(nil)*** отменяет анимацию для модификаторов, которые установлены выше ***animation(nil)*** 
@@ -197,20 +192,16 @@ Button("Tap me") {
 
 Например: 
 
-```
-... 
+```swift
 
 Button("Tap me") { 
-    isOn.toggle()
+	isOn.toggle()
 }
 .frame(width: 100, height: 100)
 .backgroundColor(isOn ? Color.red : Color.blue)
 .animation(.easeIn)
 .clipShape(RoundedRectangle(cornerRadius: isOn ? 50 : 0))
 .animate(.default)
-
-...
-}
 
 ```
 
@@ -222,45 +213,39 @@ Button("Tap me") {
 
 Например: 
 
-```
-...
+```swift
 
 @State private var dragAmount = CGSize.zero
 
-LinearGradient(gradient: Gradient(colors: [.yellow, .red]),
-               startPoint: .topLeading,
-               endPoint: .bottomTrailing)
-    .frame(width: 100, height: 100, alignment: .center)
-    .clipShape(RoundedRectangle(cornerRadius: 10))
-    .offset(dragAmount)
-    .gesture(
-        DragGesture()
-    )
-
-...
+LinearGradient(gradient: Gradient(colors: [.yellow, .red]), startPoint: .topLeading, endPoint: .bottomTrailing)
+	.frame(width: 100, height: 100, alignment: .center)
+	.clipShape(RoundedRectangle(cornerRadius: 10))
+	.offset(dragAmount)
+	.gesture(DragGesture())
 
 ```
+
 В примере выше мы указали жест перемещения для градиента (типы жестов Вам должно быть знакомо из UIKit) 
 (по мере изменения ***dragAmount*** будет меняться ***.offset()*** градиента т.е отступ от начальной точки)
 
 У ***DragGesture()*** есть два метода, где у первого есть входной параметр, с помощью которого можно узнать текущее положение пальца на экране (второй метод срабатывает после того, как палец был поднят с экрана)
 
-```
-...
+```swift
 
-.onChanged { currentPoint in currentPoint.translation}
-.onEnded { _ in self.dragAmount = .zero  }
+DragGesture()
+	.onChanged { currentPoint in currentPoint.translation}
+	.onEnded { _ in self.dragAmount = .zero  }
 
 ```
 
 Теперь можно анимировать возврат карточки в начальную точку с помощью явной анимации ***withAnimation***
 
-```
+```swift
 
 .onEnded { _ in
-    withAnimation(.spring()){
-        self.dragAmount = .zero
-    }
+	withAnimation(.spring()){
+		self.dragAmount = .zero
+	}
 }
 
 ```
@@ -273,22 +258,22 @@ LinearGradient(gradient: Gradient(colors: [.yellow, .red]),
 
 Пример: 
 
-```
+```swift
 
 @State private var isShown = true
 
 var body: Some View { 
-    VStack { 
-        Button("Tap me") {
-            isShown.toggle()
-        }
+	VStack { 
+		Button("Tap me") {
+			isShown.toggle()
+		}
 
-        if (isShown) {
-            Rectangle()
-                .fill(Color.red)
-                .frame(width: 200, height: 200)
-        }
-    }
+		if (isShown) {
+			Rectangle()
+				.fill(Color.red)
+				.frame(width: 200, height: 200)
+		}
+	}
 }
 
 ```
@@ -297,30 +282,25 @@ var body: Some View {
 
 Пример:
 
-```
-...
+```swift
 
-    withAnimation { 
-        isShown.toggle()
-    }
-    
-...
+withAnimation { 
+	isShown.toggle()
+}
+
 ```
 
 Давайте, теперь воспользуемся модификатором ***transition***, чтобы переход происходил с встроенной анимацией 
-(типы анимаций, которые могут вступать, как параметры для ***tranistion*** вы можете найти в документации)
+(типы анимаций, которые могут вступать, как параметры для ***transition*** вы можете найти в документации)
 
 Пример: 
 
-```
-...
+```swift
 
-    Rectangle()
-        .fill(Color.red)
-        .frame(width: 200, height: 200)
-        .transition(.scale)
-
-...
+Rectangle()
+	.fill(Color.red)
+	.frame(width: 200, height: 200)
+	.transition(.scale)
 
 ```
 
@@ -329,6 +309,6 @@ var body: Some View {
 В файле ***CornerRotateModifier.swift*** представлен процесс создания кастомного модификатора перехода: 
 
 ***UnitPoint*** - это фиксированная точка, относительно которой происходит анимация
-***clipped()*** - это аналог ***clipToBounds*** в UIKit (не отрисовывать вью и его сабвью за рамки супервью)
+***clipped()*** - это аналог ***clipToBounds*** в UIKit (не отрисовать вью и его сабвью за рамки супервью)
 
 C помощью расширения для ***AnyTransition*** мы создали свой модификатор для ***transition***. Указали мы в модификаторе ***modifier(active: ViewModifier, identity: ViewModifier)***  active, identity - положения вью, между которыми происходит анимация

@@ -2,59 +2,63 @@
 
 ## List
 
-Аналогия ***List*** из ***UIKit*** - ***UITableView***. Это таблица с возможностью скрола. Может показаться, что ***List*** тожедественен ***Form***, но ***List*** в нужен для показа информации, а не для ввода.  А так создание и использование ***List*** ничем не отличается от ***Form***. Также ***List*** способен воспроизводить ячейки динамически (так как таблица с доступными WiFi точками в настройках)
+Аналогия ***List*** из ***UIKit*** - ***UITableView***. Это таблица с возможностью скрола. Может показаться, что ***List*** тождественен ***Form***, но ***List*** в нужен для показа информации, а не для ввода.  А так создание и использование ***List*** ничем не отличается от ***Form***. Также ***List*** способен воспроизводить ячейки динамически (как например таблица с доступными WiFi точками в настройках)
 
 Можно также создавать таблицу со статичными ячейками:
 
-```
- List { 
-    List("Static row 1")
-    List("Static row 2")
-    List("Static row 3")
- }
+```swift
+
+List { 
+	List("Static row 1")
+	List("Static row 2")
+	List("Static row 3")
+}
+
 ```
 
 Таблицу с динамичными ячейками:
 
-```
- List { 
-    ForEach(0..<4) { 
-        Text("Dynamic row \($0)")
-    }
- }
+```swift
+
+List { 
+	ForEach(0..<4) { 
+		Text("Dynamic row \($0)")
+	}
+}
  
 ```
 
 Таблицу с динамичными и статичными ячейками: 
 
-```
-List { 
-    List("Static row 1")
-    List("Static row 2")
+```swift
 
-    ForEach(0..<4) { 
-        Text("Dynamic row \($0)")
-    }
+List { 
+	List("Static row 1")
+	List("Static row 2")
+
+	ForEach(0..<4) { 
+		Text("Dynamic row \($0)")
+	}
 }
+
 ```
 
 Ячейки можно разделять на секции и на группы как в ***Form***
 
 Чтобы создать таблицу с динамичными ячейками, можно воспользоваться: 
 
-```
+```swift
+
 @State private let arr = ["Pogos", "Artur", "Angelina", "Arut", "Inga"]
 
 List(arr, id: \.self) { name in 
-    Text(name)
+	Text(name)
 }
 
-================================
-
 List { 
-    ForEach(arr, id: \.self) { name in 
-        Text(name)
-    }
+	ForEach(arr, id: \.self) { name in 
+		Text(name)
+	}
 }
 
 ```
@@ -66,9 +70,10 @@ List {
 
 Чтобы получить путь к файлу в Bundle нужно: 
 
-```
+```swift
+
 if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
-    // we found the file in our bundle!
+	// Вы нашли файл в вашем бандле
 }
 
 ```

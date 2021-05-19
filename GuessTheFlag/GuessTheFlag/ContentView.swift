@@ -21,6 +21,7 @@ struct ContentView: View {
 	@State private var hasGuessed = false
 	@State private var size: CGFloat = 1.0
 	@State private var isWrongAnimationStoped = false
+
 	var body: some View {
 		ZStack {
 			LinearGradient(gradient: Gradient(colors: [.black, .blue]), startPoint: .top, endPoint: .bottom)
