@@ -27,13 +27,13 @@
 ```swift
 
 *Stack {
-	// Views
+  // Views
 }.background(Color.(someColor))
 
 *Stack {
-	Color.(someColor)
-		// Views
-	}
+  Color.(someColor)
+    // Views
+  }
 }
 
 ```
@@ -60,7 +60,7 @@
 ```swift
 
 Button("Title") {
-	print("Button was tapped")
+  print("Button was tapped")
 }
 
 ```
@@ -70,12 +70,12 @@ Button("Title") {
 ```swift
 
 Button(action: {
-	print("Button was tapped")
+  print("Button was tapped")
 }) {
-	VStack {
-		Image(systemImage: "Book")
-		Text("Сложная кнопка")
-	}
+  VStack {
+    Image(systemImage: "Book")
+    Text("Сложная кнопка")
+  }
 }
 
 ```
@@ -100,15 +100,15 @@ Image(decorative: "pencil")
 Пример
 
 ```swift
- 
+
 @State private var isAlertShow = false
 
-var body: some View { 
-	Button(Text("Show alert")) { 
-		isAlertShow = true
-	}.alert(isPresented: $isAlertShow, content: {
-		Alert(title: Text("Some message"), message: Text("SomeText"), dismissButton: .default(Text("OK")))
-	})
+var body: some View {
+  Button(Text("Show alert")) {
+    isAlertShow = true
+  }.alert(isPresented: $isAlertShow, content: {
+    Alert(title: Text("Some message"), message: Text("SomeText"), dismissButton: .default(Text("OK")))
+  })
 }
 
 ```

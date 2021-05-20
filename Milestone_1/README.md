@@ -12,8 +12,8 @@
 
 @State var names = ["Pogos", "Angelina", "Artur"]
 
-ForEach(names, id: \.self) { 
-	Text($0)
+ForEach(names, id: \.self) {
+  Text($0)
 }
 
 ```

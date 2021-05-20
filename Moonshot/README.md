@@ -11,12 +11,12 @@
 ```swift
 
 var body: some View { 
-	GeometryReader { geo in 
-		Image(MJ)
-			.resizable()
-			.aspectRatio(contentMode: .fit)
-			.frame(width: geometry.size.width)
-	}
+  GeometryReader { geo in 
+    Image("Your image")
+      .resizable()
+      .aspectRatio(contentMode: .fit)
+      .frame(width: geometry.size.width)
+  }
 }
 
 ```
@@ -33,17 +33,16 @@ var body: some View {
 
 ```swift
 
-var body: some View { 
-	ScrollView(.vertical) {
-		VStack { 
-			ForEach(0..<100) { 
-				Text("\($0) Row")
-			}
-		}
-		.frame(maxWidth: .infinity)
-	}
+var body: some View {
+  ScrollView(.vertical) {
+    VStack {
+      ForEach(0..<100) {
+        Text("\($0) Row")
+      }
+    }
+    .frame(maxWidth: .infinity)
+  }
 }
-
 
 ```
 
@@ -58,14 +57,11 @@ var body: some View {
 ```swift
 
 var body: some View {
-	VStack { 
-		NavigationLink(destination: Text("Detail label"), 
-					   label: {
-							Text("Next View")
-						}) 
-		
-		}
-	}
+  VStack {
+    NavigationLink(destination: Text("Detail label"), label: {
+      Text("Next View")
+    })
+  }
 }
 
 ```

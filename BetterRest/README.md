@@ -11,9 +11,9 @@
 @State private var stepperCounter: UInt8 = 0
 
 var body: some View { 
-	Stepper(value: stepperCounter) { 
-		Text("Your value is \(stepperCounter)")
-	}
+  Stepper(value: stepperCounter) { 
+    Text("Your value is \(stepperCounter)")
+  }
 }
 
 ```
@@ -28,9 +28,9 @@ var body: some View {
 ```swift
 
 var body: some View { 
-	Stepper(value: $stepperCounter, in: 5...15) {
-		Text("Your value is \(stepperCounter)")
-	}
+  Stepper(value: $stepperCounter, in: 5...15) {
+    Text("Your value is \(stepperCounter)")
+  }
 }
 
 ```
@@ -42,9 +42,9 @@ var body: some View {
 ```swift
 
 var body: some View {
-	Stepper(value: $stepperCounter, in 1...10, step: 5) { 
-		Text("Your value is \(stepperCounter)")
-	}
+  Stepper(value: $stepperCounter, in 1...10, step: 5) {
+    Text("Your value is \(stepperCounter)")
+  }
 }
 
 ``` 
@@ -62,9 +62,7 @@ var body: some View {
 @State private var date = Date() 
 
 var body: some View { 
-	DatePicker("Please enter a time", 
-			   selection: $wakeUp, 
-			   displayedComponents: .hourAndMinute)
+  DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
 }
 
 ```
@@ -75,7 +73,7 @@ var body: some View {
 
 ```swift
 
-	DatePicker("Date", selection: $date, in: Date()...)
+  DatePicker("Date", selection: $date, in: Date()...)
 
 ```
 

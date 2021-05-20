@@ -8,22 +8,22 @@
 
 ```swift
 
-struct User { 
-	var name: String = "Pogos"
-	var secondName: String = "Anesyan"
+struct User {
+  var name: String = "Pogos"
+  var secondName: String = "Anesyan"
 }
 
 struct ContentView: View {
 
-	@State private var user = User()
+  @State private var user = User()
 
-	var body: some View {
-		VStack { 
-			Text("User: \(user.name), \(user.secondName)")
-			TextField("New user name:", $user.name)
-			TextField("New user second name:", $user.secondName)
-		}
-	}
+  var body: some View {
+    VStack { 
+    Text("User: \(user.name), \(user.secondName)")
+      TextField("New user name:", $user.name)
+      TextField("New user second name:", $user.secondName)
+    }
+  }
 }
 
 ```
@@ -40,9 +40,9 @@ struct ContentView: View {
 
 ```swift
 
-class User { 
-	var name: String = "Pogos"
-	var secondName: String = "Anesyan"
+class User {
+  var name: String = "Pogos"
+  var secondName: String = "Anesyan"
 }
 
 ```
@@ -60,22 +60,22 @@ class User {
 
 ```swift
 
-class User: ObservableObject { 
-	@Published name: String = "Pogos"
-	@Published secondName: String = "Anesyan"
+class User: ObservableObject {
+  @Published name: String = "Pogos"
+  @Published secondName: String = "Anesyan"
 }
 
 struct ContentView: View {
 
-	@ObservedObject private var user = User()
+  @ObservedObject private var user = User()
 
-	var body: some View {
-		VStack { 
-			Text("User: \(user.name), \(user.secondName)")
-			TextField("New user name:", $user.name)
-			TextField("New user second name:", $user.secondName)
-		}
-	}
+  var body: some View {
+    VStack {
+      Text("User: \(user.name), \(user.secondName)")
+      TextField("New user name:", $user.name)
+      TextField("New user second name:", $user.secondName)
+    }
+  }
 }
 
 ```
@@ -90,23 +90,23 @@ struct ContentView: View {
 
 struct SecondView: View {
 
-	var body: some View { 
-		Text("This is a second view")
-	}
+  var body: some View {
+    Text("This is a second view")
+  }
 }
 
-struct ContentView: View { 
+struct ContentView: View {
 
-	@State private var isSecondViewShow = false
+  @State private var isSecondViewShow = false
 
-	var body: some View { 
-		Button("Show second view") { 
-			isSecondViewShow.toggle()
-		}
-		.sheet(isPresented: $isSecondViewShow) { 
-			SecondView()
-		}
-	}	
+  var body: some View { 
+    Button("Show second view") {
+      isSecondViewShow.toggle()
+    }
+    .sheet(isPresented: $isSecondViewShow) {
+      SecondView()
+    }
+  }
 }
 
 ```
@@ -120,15 +120,15 @@ struct ContentView: View {
 
 ```swift
 
-struct SecondView: View { 
+struct SecondView: View {
 
-	@Environment(\.presentationMode) var presentationMode
+  @Environment(\.presentationMode) var presentationMode
 
-	var body: some View { 
-		Button("Dismiss second view") { 
-			presentationMode.wrappedValue.dismiss()
-		}
-	}
+  var body: some View {
+    Button("Dismiss second view") {
+      presentationMode.wrappedValue.dismiss()
+    }
+  }
 }
 
 ```
@@ -146,15 +146,15 @@ struct SecondView: View {
 
 ```swift
 
-@State private var numbers: [Int] = [1, 2, 3] 
+@State private var numbers: [Int] = [1, 2, 3]
 
 List {
-	ForEach(numbers, id: \.self) { 
-		Text("\($0)")
-	}
-	.onDelete(perform: { indexSet in
-		numbers.remove(atOffsets: indexSet)
-	})
+  ForEach(numbers, id: \.self) {
+    Text("\($0)")
+  }
+  .onDelete(perform: { indexSet in
+    numbers.remove(atOffsets: indexSet)
+  })
 }
 
 ```

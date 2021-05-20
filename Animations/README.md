@@ -14,8 +14,8 @@
 
 ```swift
 
-Button("Title") { 
-	// do action
+Button("Title") {
+  // do action
 }
 .animation(.default)
 
@@ -29,8 +29,8 @@ Button("Title") {
 
 @State private var amountOfTap = 0
 
-Button("Title") { 
-	amountOfTap += 1
+Button("Title") {
+  amountOfTap += 1
 }
 .scaleAffect(amountOfTap)
 .animation(.default)
@@ -54,10 +54,10 @@ Button("Title") {
 ```swift
 
 .animation(
-	Animation
-		.easyInOut(duration: 2)
-		.delay(2)
-		.repeatCount(2, autoreverses: true)
+  Animation
+    .easyInOut(duration: 2)
+    .delay(2)
+    .repeatCount(2, autoreverses: true)
 )
 
 ```
@@ -74,18 +74,18 @@ Button("Title") {
 
 var body: some View {
 
-	VStack { 
-		Stepper("Tap", value: $amountOfAnimation.animation(), in 0...10) { 
-			Button("Tap me") {
-				secondAnimationAmount += 1
-			}
-			.padding(50)
-			.background(Color.blue)
-			.foregroundColor(.white)
-			.clipShape(Circle())
-			.scaleEffect(secondAnimationAmount)
-		}
-	}
+  VStack {
+    Stepper("Tap", value: $amountOfAnimation.animation(), in 0...10) {
+      Button("Tap me") {
+        secondAnimationAmount += 1
+      }
+      .padding(50)
+      .background(Color.blue)
+      .foregroundColor(.white)
+      .clipShape(Circle())
+      .scaleEffect(secondAnimationAmount)
+    }
+  }
 }
 
 ```
@@ -105,16 +105,16 @@ Stepper("Tap", value: amountOfAnimation.animation(Animation.easyInOut(duration: 
 ```swift
 
 Button("Tap me") {
-	withAnimation {
-		thirdAnimationAmount += 360
-	}
+  withAnimation {
+    thirdAnimationAmount += 360
+  }
 }
 .padding(50)
 .background(Color.purple)
 .foregroundColor(.white)
 .clipShape(Circle())
 .rotation3DEffect(
-	.degrees(thirdAnimationAmount), axis: (x: 0, y: 1, z: 0)
+  .degrees(thirdAnimationAmount), axis: (x: 0, y: 1, z: 0)
 )
 
 ```
@@ -129,7 +129,7 @@ Button("Tap me") {
 ```swift
 
 withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
-	self.animationAmount += 360
+  self.animationAmount += 360
 }
 
 ```
@@ -144,17 +144,17 @@ withAnimation(.interpolatingSpring(stiffness: 5, damping: 1)) {
 
 @State private var isOn = false
 
-var body: some View { 
-	Button("Tap me") { 
-		isOn.toggle()
-	}
-	.animate(.default)
-	.backgroundColor(isOn ? Color.red : Color.blue)
+var body: some View {
+  Button("Tap me") {
+    isOn.toggle()
+  }
+  .animate(.default)
+  .backgroundColor(isOn ? Color.red : Color.blue)
 }
 
 
 ```
-В примере выше все, что связано с состоянием ***isOn*** анимироваzться не будет, поскольку модификатор анимации установлен раньше, модификатор фона
+В примере выше все, что связано с состоянием ***isOn*** анимироваться не будет, поскольку модификатор анимации установлен раньше, модификатор фона
 
 Чтобы изменения происходили с анимацией достаточно поменять порядок модификаторов
 
@@ -162,9 +162,15 @@ var body: some View {
 
 ```swift
 
+@State private var isOn = false
+
+var body: some View {
+  Button("Tap me") {
+	isOn.toggle()
+  }
+  .backgroundColor(isOn ? Color.red : Color.blue)
+  .animate(.default)
 }
-.backgroundColor(isOn ? Color.red : Color.blue)
-.animate(.default)
 
 ```
 
@@ -175,7 +181,7 @@ var body: some View {
 ```swift
 
 Button("Tap me") { 
-	isOn.toggle()
+  isOn.toggle()
 }
 .backgroundColor(isOn ? Color.red : Color.blue)
 .frame(width: 100, height: 100)
@@ -195,7 +201,7 @@ Button("Tap me") {
 ```swift
 
 Button("Tap me") { 
-	isOn.toggle()
+  isOn.toggle()
 }
 .frame(width: 100, height: 100)
 .backgroundColor(isOn ? Color.red : Color.blue)
@@ -218,10 +224,10 @@ Button("Tap me") {
 @State private var dragAmount = CGSize.zero
 
 LinearGradient(gradient: Gradient(colors: [.yellow, .red]), startPoint: .topLeading, endPoint: .bottomTrailing)
-	.frame(width: 100, height: 100, alignment: .center)
-	.clipShape(RoundedRectangle(cornerRadius: 10))
-	.offset(dragAmount)
-	.gesture(DragGesture())
+  .frame(width: 100, height: 100, alignment: .center)
+  .clipShape(RoundedRectangle(cornerRadius: 10))
+  .offset(dragAmount)
+  .gesture(DragGesture())
 
 ```
 
@@ -233,8 +239,8 @@ LinearGradient(gradient: Gradient(colors: [.yellow, .red]), startPoint: .topLead
 ```swift
 
 DragGesture()
-	.onChanged { currentPoint in currentPoint.translation}
-	.onEnded { _ in self.dragAmount = .zero  }
+  .onChanged { currentPoint in currentPoint.translation}
+  .onEnded { _ in self.dragAmount = .zero  }
 
 ```
 
@@ -243,9 +249,9 @@ DragGesture()
 ```swift
 
 .onEnded { _ in
-	withAnimation(.spring()){
-		self.dragAmount = .zero
-	}
+  withAnimation(.spring()){
+    self.dragAmount = .zero
+  }
 }
 
 ```
@@ -262,18 +268,18 @@ DragGesture()
 
 @State private var isShown = true
 
-var body: Some View { 
-	VStack { 
-		Button("Tap me") {
-			isShown.toggle()
-		}
+var body: Some View {
+  VStack {
+    Button("Tap me") {
+      isShown.toggle()
+    }
 
-		if (isShown) {
-			Rectangle()
-				.fill(Color.red)
-				.frame(width: 200, height: 200)
-		}
-	}
+    if (isShown) {
+      Rectangle()
+        .fill(Color.red)
+        .frame(width: 200, height: 200)
+    }
+  }
 }
 
 ```
@@ -284,8 +290,8 @@ var body: Some View {
 
 ```swift
 
-withAnimation { 
-	isShown.toggle()
+withAnimation {
+  isShown.toggle()
 }
 
 ```
@@ -298,9 +304,9 @@ withAnimation {
 ```swift
 
 Rectangle()
-	.fill(Color.red)
-	.frame(width: 200, height: 200)
-	.transition(.scale)
+  .fill(Color.red)
+  .frame(width: 200, height: 200)
+  .transition(.scale)
 
 ```
 

@@ -29,7 +29,7 @@
 // Элемент 1
 
 Button { 
-	// someAction
+  // someAction
 }
 .backgroundColor(Color.red)
 .frame(width: 200, height: 200)
@@ -37,7 +37,7 @@ Button {
 // Элемент 2
 
 Button { 
-	// someAction
+  // someAction
 }
 .frame(width: 200, height: 200)
 .backgroundColor(Color.red)
@@ -78,7 +78,7 @@ Button {
 @State private var bool = false
 
 Button("Some Text") { 
-	bool.toggle()
+  bool.toggle()
 }
 .foregroundColor(bool ? .red : .blue)
 
@@ -89,12 +89,12 @@ Button("Some Text") {
 ```swift
 
 if (someBool) { 
-	Text("Some Text") 
-		.foregroundColor(.blue)
+  Text("Some Text") 
+    .foregroundColor(.blue)
 } else { 
-	Text("Some Text 2 ") 
-		.foregroundColor(.red)
-		.backgroundColor(.blue)
+  Text("Some Text 2 ") 
+    .foregroundColor(.red)
+    .backgroundColor(.blue)
 }
 
 ```
@@ -110,18 +110,18 @@ if (someBool) {
 ```swift
 
 VStack { 
-	Text("SomeText")
-		.font(.caption2)
-	Text("SomeText") 
-		.font(.caption2)
-	Text("SomeText")
-		.font(.caption2)
+  Text("SomeText")
+    .font(.caption2)
+  Text("SomeText") 
+    .font(.caption2)
+  Text("SomeText")
+    .font(.caption2)
 }
 
 VStack { 
-	Text("SomeText")
-	Text("SomeText")
-	Text("SomeText")
+  Text("SomeText")
+  Text("SomeText")
+  Text("SomeText")
 }
 .font(.caption2)
 
@@ -133,10 +133,10 @@ VStack {
 
 ```swift
 
-VStack { 
-	Text("")
-	Text("")
-	Text("")
+VStack {
+  Text("")
+  Text("")
+  Text("")
 }
 .blur(10)
 
@@ -156,13 +156,13 @@ VStack {
 
 struct ContentView: View {
 
-	var someView = Text("SomeView")
-	var someView2 = Text("SomeView2")
+  var someView = Text("SomeView")
+  var someView2 = Text("SomeView2")
 
-	var body: some View { 
-		someView
-		someView2
-	}
+  var body: some View { 
+    someView
+    someView2
+  }
 }
 
 ```
@@ -176,22 +176,23 @@ struct ContentView: View {
 
 struct ContentView: View {
 
-	var body: some View { 
-		HStack {
-			Text("Some Text")
-				.font(.largeTitle)
-				.padding()
-				.foregroundColor(.white)
-				.background(Color.blue)
-				.clipShape(Capsule())
-			Text("Some Text2")
-				.font(.largeTitle)
-				.padding()
-				.foregroundColor(.white)
-				.background(Color.blue)
-				.clipShape(Capsule())
-		}
-	}
+  var body: some View { 
+    HStack {
+      Text("Some Text")
+        .font(.largeTitle)
+        .padding()
+        .foregroundColor(.white)
+        .background(Color.blue)
+        .clipShape(Capsule())
+
+        Text("Some Text2")
+          .font(.largeTitle)
+          .padding()
+          .foregroundColor(.white)
+          .background(Color.blue)
+          .clipShape(Capsule())
+    }
+  }
 }
 
 ```
@@ -200,17 +201,18 @@ struct ContentView: View {
 
 ```swift
 
-struct CapsuleText: View { 
-	let text: String
+struct CapsuleText: View {
 
-	var body: some View { 
-		Text(text)
-			.font(.largeTitle)
-			.padding()
-			.foregroundColor(.white)
-			.background(Color.blue)
-			.clipShape(Capsule())
-			} 
+  let text: String
+
+  var body: some View { 
+    Text(text)
+      .font(.largeTitle)
+      .padding()
+      .foregroundColor(.white)
+      .background(Color.blue)
+      .clipShape(Capsule())
+  }
 }
 
 ```
@@ -222,10 +224,10 @@ struct CapsuleText: View {
 ```swift
 
 var body: someView {
-	VStack { 
-		CapsuleText(text: "")
-		CapsuleText(text: "Bla")
-	}
+  VStack { 
+    CapsuleText(text: "")
+    CapsuleText(text: "Bla")
+  }
 }
 
 ```
@@ -240,12 +242,12 @@ var body: someView {
 
 struct CustomModifier: ViewModifier {
 
-	func body(content: Content) -> some View { 
-		content
-			.modifier1()
-			.modifier2()
-			// Another modifiers...
-	}
+  func body(content: Content) -> some View { 
+    content
+      .modifier1()
+      .modifier2()
+      // Another modifiers...
+  }
 }
 
 ```
@@ -257,9 +259,9 @@ struct CustomModifier: ViewModifier {
 ```swift
 
 extension View {
-	func useYourCustomModifier() -> some View { 
-		self.modifier(CustomModifier)
-	}
+  func useYourCustomModifier() -> some View { 
+    self.modifier(CustomModifier)
+  }
 }
 
 ```
@@ -272,21 +274,21 @@ extension View {
 
 struct CustomHierarchyModifier: ViewModifier {
 
-	func body(content: Content) -> some View { 
-		ZStack(alignment: .bottomTrailing) { 
-			Color.red
-			content
-				.modifier()
-				.modifier()
-		}
-	}
+  func body(content: Content) -> some View { 
+    ZStack(alignment: .bottomTrailing) { 
+      Color.red
+      content
+      .modifier()
+      .modifier()
+    }
+  }
 }
 
 extension View { 
 
-	func customHierarchyModifier() -> some View { 
-		self.modifier(CustomHierarchyModifier())
-	}
+  func customHierarchyModifier() -> some View { 
+    self.modifier(CustomHierarchyModifier())
+  }
 }
 
 ```
