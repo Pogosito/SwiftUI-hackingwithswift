@@ -9,9 +9,9 @@
 ```swift
 
 List { 
-	List("Static row 1")
-	List("Static row 2")
-	List("Static row 3")
+  List("Static row 1")
+  List("Static row 2")
+  List("Static row 3")
 }
 
 ```
@@ -21,9 +21,9 @@ List {
 ```swift
 
 List { 
-	ForEach(0..<4) { 
-		Text("Dynamic row \($0)")
-	}
+  ForEach(0..<4) { 
+    Text("Dynamic row \($0)")
+  }
 }
  
 ```
@@ -33,12 +33,12 @@ List {
 ```swift
 
 List { 
-	List("Static row 1")
-	List("Static row 2")
+  List("Static row 1")
+  List("Static row 2")
 
-	ForEach(0..<4) { 
-		Text("Dynamic row \($0)")
-	}
+  ForEach(0..<4) { 
+    Text("Dynamic row \($0)")
+  }
 }
 
 ```
@@ -52,13 +52,13 @@ List {
 @State private let arr = ["Pogos", "Artur", "Angelina", "Arut", "Inga"]
 
 List(arr, id: \.self) { name in 
-	Text(name)
+  Text(name)
 }
 
 List { 
-	ForEach(arr, id: \.self) { name in 
-		Text(name)
-	}
+  ForEach(arr, id: \.self) { name in 
+    Text(name)
+  }
 }
 
 ```
@@ -73,7 +73,7 @@ List {
 ```swift
 
 if let fileURL = Bundle.main.url(forResource: "some-file", withExtension: "txt") {
-	// Вы нашли файл в вашем бандле
+  // Вы нашли файл в вашем бандле
 }
 
 ```
