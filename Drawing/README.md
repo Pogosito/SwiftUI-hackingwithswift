@@ -35,15 +35,15 @@
 
 struct Triangle: Shape {
 
-	func path(in rect: CGRect) -> Path {
-		var path = Path()
-		path.move(to: CGPoint(x: rect.midX, y: rect.minY))
-		path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
-		path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
-		path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
+  func path(in rect: CGRect) -> Path {
+    var path = Path()
+    path.move(to: CGPoint(x: rect.midX, y: rect.minY))
+    path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+    path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
+    path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
 
-		return path
-	}
+	return path
+  }
 }
 
 ```
@@ -54,19 +54,19 @@ struct Triangle: Shape {
 
 struct Arc: Shape {
 
-	var startAngle: Angle
-	var endAngle: Angle
-	var clockwise: Bool
+  var startAngle: Angle
+  var endAngle: Angle
+  var clockwise: Bool
 
-	func path(in rect: CGRect) -> Path {
-		var path = Path()
-		path.addArc(center: CGPoint(x: rect.midX, y: rect.midY),
-					radius: rect.width / 2,
-					startAngle: startAngle,
-					endAngle: endAngle,
-					clockwise: clockwise)
-		return path
-	}
+  func path(in rect: CGRect) -> Path {
+    var path = Path()
+    path.addArc(center: CGPoint(x: rect.midX, y: rect.midY), 
+				radius: rect.width / 2,
+				startAngle: startAngle,
+				endAngle: endAngle,
+				clockwise: clockwise)
+    return path
+  }
 }
 
 ```
@@ -87,24 +87,24 @@ struct Arc: Shape {
 
 struct Arc: Shape, InsettableShape {
 
-	var startAngle: Angle
-	var endAngle: Angle
-	var clockwise: Bool
-	var insetAmount: CGFloat = 0
+  var startAngle: Angle
+  var endAngle: Angle
+  var clockwise: Bool
+  var insetAmount: CGFloat = 0
 
-	func path(in rect: CGRect) -> Path {
-		var path = Path()
-		path.addArc(center: CGPoint(x: rect.midX, y: rect.midY),
-					radius: rect.width / 2 - insetAmount,
-					startAngle: startAngle,
-					endAngle: endAngle,
-					clockwise: clockwise)
-		return path
-	}
+  func path(in rect: CGRect) -> Path {
+    var path = Path()
+    path.addArc(center: CGPoint(x: rect.midX, y: rect.midY),
+				radius: rect.width / 2 - insetAmount,
+				startAngle: startAngle,
+				endAngle: endAngle,
+				clockwise: clockwise)
+    return path
+  }
 
-	func inset(by amount: CGFloat) -> some InsettableShape {
-		var arc = self
-		arc.insetAmount += amount
+  func inset(by amount: CGFloat) -> some InsettableShape {
+	var arc = self
+	arc.insetAmount += amount
 		return arc
 	}
 }
@@ -115,3 +115,30 @@ struct Arc: Shape, InsettableShape {
 В нашем случае при установки `strokeBorder` мы должны повлиять на радиус арки поэтому, очевидно, мы должны от текущего радиуса отнять, указанный отступ
 
 (Если ваш объект комфермит протокол `InsettableShape` , то он (объект) автоматически комфермит протокол `Shape`. В примере выше можно удалить первый протокол)
+
+# Day 44
+
+## ImagePaint
+
+Как мы знаем цвет в SwiftUI - View. Также цвет можно использовать в качестве аргумента, где требуется передать`ShapeStyle`. 
+С картинками немного другая история. Картинку, так же как и цвет можно передавать туда куда требуется `View`
+
+```(swift)
+
+var body: some View {
+  Text("Some text")
+    .background(Image("someImage"))
+}
+
+```
+
+Но установить просто картинку в качестве границ view не получится. Для этого используйте `ImagePaint`
+
+```(swift)
+
+var body: some View { 
+  Text(Some text)
+    .border(ImagePaint("someImage"))
+}
+
+```
