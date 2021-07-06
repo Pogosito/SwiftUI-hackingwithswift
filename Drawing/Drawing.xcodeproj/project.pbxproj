@@ -17,6 +17,10 @@
 		0494FB7E266A03E600CBF443 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0494FB7D266A03E600CBF443 /* Preview Assets.xcassets */; };
 		0494FB81266A03E600CBF443 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0494FB7F266A03E600CBF443 /* LaunchScreen.storyboard */; };
 		0494FB89266A03F600CBF443 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 0494FB88266A03F600CBF443 /* README.md */; };
+		04BD678C26827B67003047E1 /* SecondContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BD678B26827B67003047E1 /* SecondContentView.swift */; };
+		04BD678E2683D0B0003047E1 /* Trapezoid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BD678D2683D0B0003047E1 /* Trapezoid.swift */; };
+		04BD67912683D0E7003047E1 /* ThirdContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BD67902683D0E7003047E1 /* ThirdContentView.swift */; };
+		04BD67932683D676003047E1 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BD67922683D676003047E1 /* Star.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +36,10 @@
 		0494FB80266A03E600CBF443 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0494FB82266A03E600CBF443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0494FB88266A03F600CBF443 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		04BD678B26827B67003047E1 /* SecondContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondContentView.swift; sourceTree = "<group>"; };
+		04BD678D2683D0B0003047E1 /* Trapezoid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trapezoid.swift; sourceTree = "<group>"; };
+		04BD67902683D0E7003047E1 /* ThirdContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdContentView.swift; sourceTree = "<group>"; };
+		04BD67922683D676003047E1 /* Star.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +58,9 @@
 			children = (
 				0414A61426700817006504F4 /* Triangle.swift */,
 				0414A61626700832006504F4 /* Arc.swift */,
+				04BD678D2683D0B0003047E1 /* Trapezoid.swift */,
 				0414A6182670084D006504F4 /* Flower.swift */,
+				04BD67922683D676003047E1 /* Star.swift */,
 			);
 			name = Shapes;
 			sourceTree = "<group>";
@@ -77,7 +87,7 @@
 			children = (
 				0494FB74266A03E300CBF443 /* AppDelegate.swift */,
 				0494FB76266A03E300CBF443 /* SceneDelegate.swift */,
-				0494FB78266A03E300CBF443 /* ContentView.swift */,
+				04BD678F2683D0C6003047E1 /* Content */,
 				0414A613267007F4006504F4 /* Shapes */,
 				0494FB7A266A03E600CBF443 /* Assets.xcassets */,
 				0494FB7F266A03E600CBF443 /* LaunchScreen.storyboard */,
@@ -93,6 +103,16 @@
 				0494FB7D266A03E600CBF443 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		04BD678F2683D0C6003047E1 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				0494FB78266A03E300CBF443 /* ContentView.swift */,
+				04BD678B26827B67003047E1 /* SecondContentView.swift */,
+				04BD67902683D0E7003047E1 /* ThirdContentView.swift */,
+			);
+			name = Content;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,11 +186,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BD678C26827B67003047E1 /* SecondContentView.swift in Sources */,
 				0494FB75266A03E300CBF443 /* AppDelegate.swift in Sources */,
 				0494FB77266A03E300CBF443 /* SceneDelegate.swift in Sources */,
+				04BD67932683D676003047E1 /* Star.swift in Sources */,
 				0414A6192670084D006504F4 /* Flower.swift in Sources */,
+				04BD67912683D0E7003047E1 /* ThirdContentView.swift in Sources */,
 				0414A61726700832006504F4 /* Arc.swift in Sources */,
 				0494FB79266A03E300CBF443 /* ContentView.swift in Sources */,
+				04BD678E2683D0B0003047E1 /* Trapezoid.swift in Sources */,
 				0414A61526700817006504F4 /* Triangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
