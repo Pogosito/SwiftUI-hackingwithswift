@@ -10,6 +10,9 @@
 		0414A61526700817006504F4 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414A61426700817006504F4 /* Triangle.swift */; };
 		0414A61726700832006504F4 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414A61626700832006504F4 /* Arc.swift */; };
 		0414A6192670084D006504F4 /* Flower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0414A6182670084D006504F4 /* Flower.swift */; };
+		044401442699CD6A00BA9479 /* FourthContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044401432699CD6A00BA9479 /* FourthContentView.swift */; };
+		044401462699CE5500BA9479 /* Arrrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044401452699CE5500BA9479 /* Arrrow.swift */; };
+		047A346126A34BA4001FD303 /* ColorCyclingRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047A346026A34BA4001FD303 /* ColorCyclingRectangle.swift */; };
 		0494FB75266A03E300CBF443 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494FB74266A03E300CBF443 /* AppDelegate.swift */; };
 		0494FB77266A03E300CBF443 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494FB76266A03E300CBF443 /* SceneDelegate.swift */; };
 		0494FB79266A03E300CBF443 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0494FB78266A03E300CBF443 /* ContentView.swift */; };
@@ -27,6 +30,9 @@
 		0414A61426700817006504F4 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
 		0414A61626700832006504F4 /* Arc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 		0414A6182670084D006504F4 /* Flower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flower.swift; sourceTree = "<group>"; };
+		044401432699CD6A00BA9479 /* FourthContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthContentView.swift; sourceTree = "<group>"; };
+		044401452699CE5500BA9479 /* Arrrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arrrow.swift; sourceTree = "<group>"; };
+		047A346026A34BA4001FD303 /* ColorCyclingRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCyclingRectangle.swift; sourceTree = "<group>"; };
 		0494FB71266A03E300CBF443 /* Drawing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Drawing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0494FB74266A03E300CBF443 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0494FB76266A03E300CBF443 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +67,8 @@
 				04BD678D2683D0B0003047E1 /* Trapezoid.swift */,
 				0414A6182670084D006504F4 /* Flower.swift */,
 				04BD67922683D676003047E1 /* Star.swift */,
+				044401452699CE5500BA9479 /* Arrrow.swift */,
+				047A346026A34BA4001FD303 /* ColorCyclingRectangle.swift */,
 			);
 			name = Shapes;
 			sourceTree = "<group>";
@@ -111,6 +119,7 @@
 				0494FB78266A03E300CBF443 /* ContentView.swift */,
 				04BD678B26827B67003047E1 /* SecondContentView.swift */,
 				04BD67902683D0E7003047E1 /* ThirdContentView.swift */,
+				044401432699CD6A00BA9479 /* FourthContentView.swift */,
 			);
 			name = Content;
 			sourceTree = "<group>";
@@ -190,12 +199,15 @@
 				0494FB75266A03E300CBF443 /* AppDelegate.swift in Sources */,
 				0494FB77266A03E300CBF443 /* SceneDelegate.swift in Sources */,
 				04BD67932683D676003047E1 /* Star.swift in Sources */,
+				044401442699CD6A00BA9479 /* FourthContentView.swift in Sources */,
 				0414A6192670084D006504F4 /* Flower.swift in Sources */,
 				04BD67912683D0E7003047E1 /* ThirdContentView.swift in Sources */,
 				0414A61726700832006504F4 /* Arc.swift in Sources */,
+				044401462699CE5500BA9479 /* Arrrow.swift in Sources */,
 				0494FB79266A03E300CBF443 /* ContentView.swift in Sources */,
 				04BD678E2683D0B0003047E1 /* Trapezoid.swift in Sources */,
 				0414A61526700817006504F4 /* Triangle.swift in Sources */,
+				047A346126A34BA4001FD303 /* ColorCyclingRectangle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
