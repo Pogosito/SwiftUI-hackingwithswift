@@ -7,31 +7,12 @@
 
 import SwiftUI
 
-class Order: ObservableObject, Codable {
+struct OrderWrapper: Codable {
 
-	var hasValidAddress: Bool {
-		if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
-			return false
-		}
-		return true
-	}
+	var type = 0
+	var quantity = 3
 
-	var order: Double {
-		var cost = Double(quantity) * 2
-
-		cost += (Double(type) / 2)
-
-		if extraFrosting { cost += Double(quantity) }
-		if addSprinkles { cost += Double(quantity) / 2 }
-		return cost
-	}
-
-	static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
-
-	@Published var type = 0
-	@Published var quantity = 3
-
-	@Published var specialRequestEnabled = false {
+	var specialRequestEnabled = false {
 		didSet {
 			if specialRequestEnabled == false {
 				extraFrosting = false
@@ -40,50 +21,69 @@ class Order: ObservableObject, Codable {
 		}
 	}
 
-	@Published var extraFrosting = false
-	@Published var addSprinkles = false
+	var extraFrosting = false
+	var addSprinkles = false
 
-	@Published var name = ""
-	@Published var streetAddress = ""
-	@Published var city = ""
-	@Published var zip = ""
+	var name = ""
+	var streetAddress = ""
+	var city = ""
+	var zip = ""
+}
+
+class Order: ObservableObject, Codable {
+
+	@Published var orderValues = OrderWrapper(type: 0,
+											  quantity: 0,
+											  specialRequestEnabled: false,
+											  extraFrosting: false,
+											  addSprinkles: false,
+											  name: "",
+											  streetAddress: "",
+											  city: "",
+											  zip: "")
+
+	var isFieldsEmpty: Bool {
+		orderValues.name.isEmpty || orderValues.streetAddress.isEmpty || orderValues.city.isEmpty || orderValues.zip.isEmpty
+	}
+
+	var isFieldsWhiteSpace: Bool {
+		orderValues.name.hasPrefix(String(repeating: " ", count: orderValues.name.count))
+		|| orderValues.streetAddress.hasPrefix(String(repeating: " ", count: orderValues.streetAddress.count))
+		|| orderValues.city.hasPrefix(String(repeating: " ", count: orderValues.city.count))
+		|| orderValues.zip.hasPrefix(String(repeating: " ", count: orderValues.zip.count))
+	}
+
+	var hasValidAddress: Bool {
+		if isFieldsEmpty || isFieldsWhiteSpace { return false }
+		return true
+	}
+
+	var order: Double {
+		var cost = Double(orderValues.quantity) * 2
+
+		cost += (Double(orderValues.type) / 2)
+
+		if orderValues.extraFrosting { cost += Double(orderValues.quantity) }
+		if orderValues.addSprinkles { cost += Double(orderValues.quantity) / 2 }
+		return cost
+	}
+
+	static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
 
 	enum CodingKeys: CodingKey {
-		case type
-		case quantity
-		case extraFrosting
-		case addSprinkles
-		case name
-		case streetAddress
-		case city
-		case zip
+		case orderValues
 	}
 
 	required init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 
-		type = try container.decode(Int.self, forKey: .type)
-		quantity = try container.decode(Int.self, forKey: .quantity)
-		extraFrosting = try container.decode(Bool.self, forKey: .extraFrosting)
-		addSprinkles = try container.decode(Bool.self, forKey: .addSprinkles)
-		name = try container.decode(String.self, forKey: .name)
-		streetAddress = try container.decode(String.self, forKey: .streetAddress)
-		city = try container.decode(String.self, forKey: .city)
-		zip = try container.decode(String.self, forKey: .zip)
+		orderValues = try container.decode(OrderWrapper.self, forKey: .orderValues)
 	}
 
 	init() {}
 
 	func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
-
-		try container.encode(type, forKey: CodingKeys.type)
-		try container.encode(quantity, forKey: CodingKeys.quantity)
-		try container.encode(extraFrosting, forKey: CodingKeys.extraFrosting)
-		try container.encode(addSprinkles, forKey: CodingKeys.addSprinkles)
-		try container.encode(name, forKey: CodingKeys.name)
-		try container.encode(streetAddress, forKey: CodingKeys.streetAddress)
-		try container.encode(city, forKey: CodingKeys.city)
-		try container.encode(zip, forKey: CodingKeys.zip)
+		try container.encode(orderValues, forKey: CodingKeys.orderValues)
 	}
 }

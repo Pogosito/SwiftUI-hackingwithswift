@@ -11,7 +11,9 @@ struct CheckoutView: View {
 
 	@ObservedObject var order: Order
 	@State private var confirmationMessage = ""
-	@State private var showingConfirmation = false
+	@State private var showingResponseInformation = false
+	@State private var isError = false
+	@State private var error: LocalizedError?
 
 	lazy var price: LocalizedStringKey = "\(order.order, specifier: "%.2f")"
 
@@ -32,9 +34,12 @@ struct CheckoutView: View {
 					}.padding()
 				}
 			}
-			.alert(isPresented: $showingConfirmation) {
-				Alert(title: Text("Thank you"), message: Text(confirmationMessage), dismissButton: .default(Text("OK")))
-			}
+		}
+		.alert(isPresented: $showingResponseInformation) {
+			Alert(title: Text(isError ? "OOPS!" : "Thank you"),
+				  message: Text(isError ? self.error?.localizedDescription ?? "Some unknown error" : confirmationMessage),
+				  dismissButton: .default(Text(isError ? "Try later" : "OK"))
+			)
 		}
 	}
 
@@ -52,12 +57,15 @@ struct CheckoutView: View {
 		URLSession.shared.dataTask(with: request) { data, response, error in
 			guard let safeData = data else {
 				print("No data in response: \(error?.localizedDescription ?? "Unknown error")")
+				isError = true
+				showingResponseInformation = true
 				return
 			}
 
 			if let decoderOrder = try? JSONDecoder().decode(Order.self, from: safeData) {
-				self.confirmationMessage = "Your order for \(decoderOrder.quantity) X \(Order.types[decoderOrder.type].lowercased()) cupcakes is on its away"
-				self.showingConfirmation = true
+				confirmationMessage = "Your order for \(decoderOrder.orderValues.quantity) X \(Order.types[decoderOrder.orderValues.type].lowercased()) cupcakes is on its away"
+				isError = false
+				showingResponseInformation = true
 			} else {
 				print("Invalid response from server")
 			}
